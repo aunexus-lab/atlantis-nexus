@@ -1,5 +1,6 @@
 import React from 'react';
 import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import Section from './components/Section';
 
 // Content Imports (Vite ?raw import)
@@ -33,7 +34,7 @@ function App() {
         {/* HERO SECTION */}
         <section className="max-w-4xl mx-auto px-6 py-20 text-center md:text-left">
           <div className="prose prose-xl prose-headings:font-bold prose-headings:tracking-tighter prose-headings:text-black prose-blockquote:text-2xl prose-blockquote:font-light prose-blockquote:italic prose-blockquote:border-l-4 prose-blockquote:border-gray-300 prose-blockquote:pl-6">
-            <Markdown>{heroMd}</Markdown>
+            <Markdown rehypePlugins={[rehypeRaw]}>{heroMd}</Markdown>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mt-16 border-t border-gray-100 pt-12">
@@ -80,7 +81,7 @@ function App() {
       <footer className="border-t border-gray-100 py-12 text-center text-sm text-gray-400">
         <p>© 2026 Atlantis Nexus. Academic Reference Model.</p>
       </footer>
-    </div>
+    </div >
   );
 }
 

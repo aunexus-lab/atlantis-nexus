@@ -1,5 +1,6 @@
 import React from 'react';
 import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 function Section({ id, title, children, content, className = "" }) {
     return (
@@ -13,7 +14,7 @@ function Section({ id, title, children, content, className = "" }) {
             {/* If raw markdown string is provided, render it with Typography plugin */}
             {content ? (
                 <article className="prose prose-lg prose-academic text-academic-sub leading-relaxed max-w-none hover:prose-a:text-black">
-                    <Markdown>{content}</Markdown>
+                    <Markdown rehypePlugins={[rehypeRaw]}>{content}</Markdown>
                 </article>
             ) : (
                 /* Fallback for direct children (e.g. custom React components like the Domain grid) */
