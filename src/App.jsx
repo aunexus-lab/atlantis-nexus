@@ -37,7 +37,7 @@ function App() {
             <Markdown
               rehypePlugins={[rehypeRaw]}
               components={{
-                h1: ({ node, ...props }) => <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] text-black mb-8" {...props} />,
+                h1: ({ node, ...props }) => <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-black mb-8" {...props} />,
                 p: ({ node, ...props }) => <p className="text-xl md:text-2xl text-gray-500 font-light leading-relaxed max-w-3xl" {...props} />,
                 blockquote: ({ node, ...props }) => <blockquote className="text-2xl md:text-3xl font-light italic text-gray-800 border-l-4 border-gray-900 pl-6 my-8" {...props} />
               }}
