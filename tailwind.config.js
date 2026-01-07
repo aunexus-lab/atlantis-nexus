@@ -19,6 +19,10 @@ export default {
                 sans: ['Inter', 'system-ui', 'sans-serif'],
                 serif: ['Georgia', 'serif'],
             },
+            letterSpacing: {
+                tighter: '-0.05em',
+                tightest: '-0.08em',
+            },
             typography: (theme) => ({
                 DEFAULT: {
                     css: {

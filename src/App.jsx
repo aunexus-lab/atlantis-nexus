@@ -33,7 +33,7 @@ function App() {
 
         {/* HERO SECTION */}
         <section className="max-w-4xl mx-auto px-6 py-20 text-center md:text-left">
-          <div className="prose prose-xl prose-headings:font-bold prose-headings:tracking-tighter prose-headings:text-black prose-blockquote:text-2xl prose-blockquote:font-light prose-blockquote:italic prose-blockquote:border-l-4 prose-blockquote:border-gray-300 prose-blockquote:pl-6">
+          <div className="prose prose-xl md:prose-2xl max-w-none prose-headings:font-black prose-headings:tracking-tightest prose-headings:text-black prose-headings:leading-[0.85] prose-headings:text-6xl md:prose-headings:text-8xl prose-blockquote:text-2xl prose-blockquote:font-light prose-blockquote:italic prose-blockquote:border-l-4 prose-blockquote:border-gray-300 prose-blockquote:pl-6">
             <Markdown rehypePlugins={[rehypeRaw]}>{heroMd}</Markdown>
           </div>
 
