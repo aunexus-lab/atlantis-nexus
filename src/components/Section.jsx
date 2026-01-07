@@ -1,6 +1,7 @@
 import React from 'react';
+import Markdown from 'react-markdown';
 
-function Section({ id, title, children, className = "" }) {
+function Section({ id, title, children, content, className = "" }) {
     return (
         <section id={id} className={`py-16 md:py-24 max-w-4xl mx-auto px-6 ${className}`}>
             {title && (
@@ -8,9 +9,18 @@ function Section({ id, title, children, className = "" }) {
                     {title}
                 </h2>
             )}
-            <div className="text-lg text-academic-sub leading-relaxed">
-                {children}
-            </div>
+
+            {/* If raw markdown string is provided, render it with Typography plugin */}
+            {content ? (
+                <article className="prose prose-lg prose-academic text-academic-sub leading-relaxed max-w-none hover:prose-a:text-black">
+                    <Markdown>{content}</Markdown>
+                </article>
+            ) : (
+                /* Fallback for direct children (e.g. custom React components like the Domain grid) */
+                <div className="text-lg text-academic-sub leading-relaxed">
+                    {children}
+                </div>
+            )}
         </section>
     );
 }
