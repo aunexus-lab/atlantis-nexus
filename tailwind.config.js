@@ -35,6 +35,13 @@ export default {
                         },
                         h1: { fontSize: '2.5rem' },
                         h2: { marginTop: '1.5em', marginBottom: '0.8em' },
+                        blockquote: {
+                            fontStyle: 'italic',
+                            color: theme('colors.academic-sub'),
+                            borderLeftColor: theme('colors.gray.300'),
+                            borderLeftWidth: '4px',
+                            paddingLeft: '1rem',
+                        },
                     },
                 },
             }),
@@ -42,5 +49,18 @@ export default {
     },
     plugins: [
         require('@tailwindcss/typography'),
+        function ({ addUtilities }) {
+            addUtilities({
+                '.perspective-1000': {
+                    'perspective': '1000px',
+                },
+                '.rotate-y-12': {
+                    'transform': 'rotateY(12deg)',
+                },
+                '.rotate-z-2': {
+                    'transform': 'rotateZ(2deg)',
+                },
+            })
+        }
     ],
 }

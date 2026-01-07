@@ -50,8 +50,14 @@ function App() {
             {/* We manually parse principles for the 3-column layout, or just render MD if simpler. 
                  For now, let's keep the nice 3-col layout but feed it from specific small MD files if we wanted, 
                  or just use a single Markdown block. Using the single block for simplicity as requested. */}
-            <div className="col-span-3 prose prose-academic">
-              <Markdown>{principlesMd}</Markdown>
+            <div className="col-span-3 text-left">
+              <Markdown
+                rehypePlugins={[rehypeRaw]}
+                components={{
+                  h3: ({ node, ...props }) => <h3 className="text-xl font-bold text-black mb-2" {...props} />,
+                  p: ({ node, ...props }) => <p className="text-gray-600 font-light leading-relaxed" {...props} />
+                }}
+              >{principlesMd}</Markdown>
             </div>
           </div>
         </section>
