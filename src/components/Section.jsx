@@ -20,8 +20,9 @@ function Section({ id, title, children, content, className = "" }) {
                             blockquote: ({ node, ...props }) => (
                                 <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4" {...props} />
                             ),
-                            ul: ({ node, ...props }) => <ul className="list-disc pl-5 space-y-1 my-4" {...props} />,
-                            li: ({ node, ...props }) => <li className="pl-1" {...props} />,
+                            ul: ({ node, ...props }) => <ul className="list-disc pl-5 space-y-2 my-4" {...props} />,
+                            ol: ({ node, ...props }) => <ol className="list-decimal pl-5 space-y-2 my-4" {...props} />,
+                            li: ({ node, ...props }) => <li className="pl-1 leading-relaxed" {...props} />,
                             a: ({ node, ...props }) => <a className="text-gray-600 underline decoration-gray-300 hover:text-black hover:decoration-black transition-colors" {...props} />,
                             strong: ({ node, ...props }) => <strong className="font-semibold text-gray-900" {...props} />,
                             hr: ({ node, ...props }) => <hr className="my-8 border-gray-200" {...props} />,

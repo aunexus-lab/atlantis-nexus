@@ -66,14 +66,10 @@ function App() {
         <Section id="about" title="What is Atlantis Nexus" content={aboutMd} />
 
         {/* DOMAINS - Hybrid approach: MD intro + React Grid */}
-        <Section id="domains" title="Capability Domains">
-          {/* We render the text part via Markdown */}
-          <div className="prose prose-academic mb-8">
-            <Markdown>{domainsMd}</Markdown>
-          </div>
-
+        {/* DOMAINS - Hybrid approach: MD intro + React Grid */}
+        <Section id="domains" title="Capability Domains" content={domainsMd}>
           {/* We keep the grid visual as it's a structural element, not just text */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 pt-12 border-t border-gray-100">
             {['Cognitive Architecture', 'Data Engineering', 'Digital Ethics', 'Systems Thinking', 'Human-Computer Interaction', 'Computational Logic', 'Adaptive Infrastructure'].map((domain) => (
               <div key={domain} className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-gray-300 transition-colors">
                 <span className="font-medium text-gray-900">{domain}</span>
