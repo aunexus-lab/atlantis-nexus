@@ -45,12 +45,13 @@ Error generating stack: `+l.message+`
 </div>
 
 </div>
-`,Q6=`# Atlantis Nexus
+`,Q6=`<div class="grid md:grid-cols-2 gap-8 items-start">
+
+<div>
 
 An academic capability framework for coherent digital learning.
- 
-> Atlantis Nexus is an academic reference model that aligns learning intent, digital capabilities, and evidence production across programs.
 
+> Atlantis Nexus is an academic reference model that aligns learning intent, digital capabilities, and evidence production across programs.
 
 **What it optimizes**
 
@@ -58,11 +59,6 @@ An academic capability framework for coherent digital learning.
 - **Evidence-centered**: Learning is validated through tangible production artifacts.
 - **Replaceable tools**: Technology changes; academic intent remains constant.
 
----
-
-<div class="grid md:grid-cols-2 gap-8 items-start">
-
-<div>
 
 ### Explore
 - [What is Atlantis Nexus](./about)
