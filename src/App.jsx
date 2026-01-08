@@ -1,6 +1,7 @@
 import React from 'react';
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm';
 import Section from './components/Section';
 
 // Content Imports (Vite ?raw import)
@@ -9,8 +10,7 @@ import principlesMd from './content/principles.md?raw';
 import aboutMd from './content/about.md?raw';
 import domainsMd from './content/domains.md?raw';
 import progressionMd from './content/progression.md?raw';
-import msaiMd from './content/msai.md?raw';
-import governanceMd from './content/governance.md?raw';
+import projectsMd from './content/projects.md?raw';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
             <a href="#about" className="hover:text-black transition-colors">About</a>
             <a href="#domains" className="hover:text-black transition-colors">Domains</a>
             <a href="#progression" className="hover:text-black transition-colors">Progression</a>
-            <a href="#governance" className="hover:text-black transition-colors">Governance</a>
+            <a href="#projects" className="hover:text-black transition-colors">Projects</a>
           </nav>
         </div>
       </header>
@@ -66,7 +66,6 @@ function App() {
         <Section id="about" title="What is Atlantis Nexus" content={aboutMd} />
 
         {/* DOMAINS - Hybrid approach: MD intro + React Grid */}
-        {/* DOMAINS - Hybrid approach: MD intro + React Grid */}
         <Section id="domains" title="Capability Domains" content={domainsMd}>
           {/* We keep the grid visual as it's a structural element, not just text */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 pt-12 border-t border-gray-100">
@@ -81,11 +80,8 @@ function App() {
         {/* LEARNING PROGRESSION */}
         <Section id="progression" title="Learning Progression" content={progressionMd} />
 
-        {/* PROGRAM EXAMPLE */}
-        <Section id="msai" title="Program Example: MSAI" content={msaiMd} />
-
-        {/* GOVERNANCE */}
-        <Section id="governance" title="Governance & Evolution" content={governanceMd} />
+        {/* PROJECTS */}
+        <Section id="projects" title="Projects & Artifacts" content={projectsMd} />
 
       </main>
 

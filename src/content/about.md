@@ -23,12 +23,10 @@ An academic capability framework for coherent digital learning.
 
 
 ### Explore
-- [What is Atlantis Nexus](./about)
-- [Capability Domains](./domains)
-- [Learning Progression](./progression)
-- [Program Example: MSAI](./msai)
-- [Governance & Evolution](./governance)
-
+- [What is Atlantis Nexus](#about)
+- [Capability Domains](#domains)
+- [Learning Progression](#progression)
+- [Projects](#projects) 
 </div>
 
 <div>

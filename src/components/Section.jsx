@@ -1,6 +1,7 @@
 import React from 'react';
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm';
 
 function Section({ id, title, children, content, className = "" }) {
     return (
@@ -16,7 +17,14 @@ function Section({ id, title, children, content, className = "" }) {
                 <article className="prose prose-lg text-academic-sub leading-relaxed max-w-none hover:prose-a:text-black">
                     <Markdown
                         rehypePlugins={[rehypeRaw]}
+                        remarkPlugins={[remarkGfm]}
                         components={{
+                            table: ({ node, ...props }) => <div className="overflow-x-auto my-8"><table className="min-w-full divide-y divide-gray-200 text-sm" {...props} /></div>,
+                            thead: ({ node, ...props }) => <thead className="bg-gray-50 text-left" {...props} />,
+                            tbody: ({ node, ...props }) => <tbody className="divide-y divide-gray-200 bg-white" {...props} />,
+                            tr: ({ node, ...props }) => <tr className="hover:bg-gray-50 transition-colors" {...props} />,
+                            th: ({ node, ...props }) => <th className="px-4 py-3 font-semibold text-gray-900 border-b border-gray-200" {...props} />,
+                            td: ({ node, ...props }) => <td className="px-4 py-3 text-gray-600 align-top" {...props} />,
                             blockquote: ({ node, ...props }) => (
                                 <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4" {...props} />
                             ),

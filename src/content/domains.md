@@ -25,16 +25,28 @@ This inventory intentionally precedes any platform selection. Its purpose is to:
 
 Atlantis Nexus recognizes the following **cross-program capability domains**:
 
-1. Academic identity and access
-2. Knowledge creation and collaboration
-3. Data and information handling
-4. Analysis, modeling, and visualization
-5. Automation and workflow reasoning
-6. Applied artificial intelligence
-7. Evidence, portfolio, and assessment
+1. **Cognitive Architecture**
+2. **Data Engineering**
+3. **Digital Ethics**
+4. **Systems Thinking**
+5. **Human-Computer Interaction**
+6. **Computational Logic**
+7. **Adaptive Infrastructure**
 
 Each program emphasizes these domains differently, resulting in **distinct Technology Paths**.
 
 </div>
 
 </div>
+
+## Domain definitions 
+
+| Domain | One-line definition | Signals (3) | Evidence (3) |
+| --- | --- | --- | --- |
+| **Cognitive Architecture** | How learners structure reasoning and decisions in complex digital contexts. | problem framing<br>explicit assumptions<br>tradeoff justification | decision memo<br>conceptual model/diagram<br>annotated workflow |
+| **Data Engineering** | Building validated, reproducible data pipelines and data-ready artifacts. | data ingestion/cleaning<br>schema & pipeline design<br>quality checks | dataset + data dictionary<br>pipeline repo with tests<br>reproducible notebook |
+| **Digital Ethics** | Responsible decision-making about data, systems, and their impacts. | stakeholder analysis<br>risk assessment<br>mitigation proposals | ethical impact assessment<br>model/dataset documentation<br>policy memo |
+| **Systems Thinking** | Reasoning about systems with dependencies, feedback loops, and constraints. | system boundaries<br>dependency mapping<br>constraint tradeoffs | system map<br>architecture review<br>scenario analysis |
+| **Human-Computer Interaction** | Designing usable, accessible interactions aligned with human goals. | user needs framing<br>usability testing<br>iteration | wireframes + test notes<br>prototype study summary<br>accessibility checklist |
+| **Computational Logic** | Formal reasoning, precise specification, and algorithmic correctness. | clear specifications<br>test strategies<br>complexity awareness | spec + tests + notes<br>correctness argument<br>benchmark comparison |
+| **Adaptive Infrastructure** | Building reliable, observable systems that can evolve over time. | deployment discipline<br>observability planning<br>design for change | runbook/deployment plan<br>monitoring plan<br>postmortem analysis |
