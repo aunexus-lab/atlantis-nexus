@@ -3,6 +3,7 @@ import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import Section from '../components/Section';
+import useJsonLd from '../hooks/useJsonLd';
 
 // Content Imports
 import heroMd from '../content/hero.md?raw';
@@ -13,6 +14,45 @@ import progressionMd from '../content/progression.md?raw';
 import projectsMd from '../content/projects.md?raw';
 
 function LandingPage() {
+    useJsonLd({
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'EducationalOrganization',
+                '@id': 'https://nexus.atlantisuniversity.edu/#org',
+                name: 'Atlantis University',
+                url: 'https://www.atlantisuniversity.edu',
+                sameAs: [
+                    'https://github.com/aunexus-lab'
+                ]
+            },
+            {
+                '@type': 'WebSite',
+                '@id': 'https://nexus.atlantisuniversity.edu/#website',
+                url: 'https://nexus.atlantisuniversity.edu',
+                name: 'Atlantis Nexus',
+                description: 'Academic Reference Model for emerging-technology education — covering AI, data engineering, systems thinking, and digital ethics.',
+                publisher: { '@id': 'https://nexus.atlantisuniversity.edu/#org' }
+            },
+            {
+                '@type': 'WebPage',
+                '@id': 'https://nexus.atlantisuniversity.edu/',
+                url: 'https://nexus.atlantisuniversity.edu/',
+                name: 'Atlantis Nexus — Academic Reference Model',
+                description: 'A structured framework for teaching emerging technologies. Covers 7 capability domains: Cognitive Architecture, Data Engineering, Digital Ethics, Systems Thinking, HCI, Computational Logic, and Adaptive Infrastructure.',
+                isPartOf: { '@id': 'https://nexus.atlantisuniversity.edu/#website' },
+                about: [
+                    { '@type': 'Thing', name: 'Cognitive Architecture' },
+                    { '@type': 'Thing', name: 'Data Engineering' },
+                    { '@type': 'Thing', name: 'Digital Ethics' },
+                    { '@type': 'Thing', name: 'Systems Thinking' },
+                    { '@type': 'Thing', name: 'Human-Computer Interaction' },
+                    { '@type': 'Thing', name: 'Computational Logic' },
+                    { '@type': 'Thing', name: 'Adaptive Infrastructure' }
+                ]
+            }
+        ]
+    }, 'landing');
     return (
         <>
             {/* HERO SECTION */}

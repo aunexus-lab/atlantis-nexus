@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import FrameworkDiagram from '../components/FrameworkDiagram';
 import Section from '../components/Section';
+import useJsonLd from '../hooks/useJsonLd';
 
 /* ── Solution data ─────────────────────────────────────── */
 const solutions = [
@@ -292,6 +293,36 @@ function BenefitCard({ item }) {
 /* ── Main Framework Page ───────────────────────────────── */
 function FrameworkPage() {
     const [activeSection, setActiveSection] = useState('architecture');
+
+    useJsonLd({
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'TechArticle',
+                '@id': 'https://nexus.atlantisuniversity.edu/framework',
+                url: 'https://nexus.atlantisuniversity.edu/framework',
+                headline: 'Nexus Framework — Integration Ecosystem',
+                description: 'The integration backbone connecting the Student Information System (SIS) with the online campus. A hub-and-spoke architecture with a central API gateway, AI services, and Moodle plugins that turn institutional data into experiences.',
+                author: { '@id': 'https://nexus.atlantisuniversity.edu/#org' },
+                isPartOf: { '@id': 'https://nexus.atlantisuniversity.edu/#website' },
+                about: { '@type': 'Thing', name: 'Educational Technology Integration' },
+                articleSection: ['Architecture', 'Solution Catalog', 'Benefits']
+            },
+            ...solutions.map(sol => ({
+                '@type': 'SoftwareSourceCode',
+                name: sol.name,
+                description: sol.summary,
+                codeRepository: sol.repo,
+                programmingLanguage: sol.type.includes('Python') ? 'Python'
+                    : sol.type.includes('FastAPI') ? 'Python'
+                        : sol.type.includes('Moodle') ? 'PHP'
+                            : sol.type.includes('course format') ? 'PHP'
+                                : 'PHP',
+                applicationCategory: sol.tag,
+                author: { '@id': 'https://nexus.atlantisuniversity.edu/#org' }
+            }))
+        ]
+    }, 'framework');
 
     // Track scroll position to highlight active nav item
     useEffect(() => {
