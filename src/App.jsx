@@ -5,7 +5,7 @@ import FrameworkPage from './pages/FrameworkPage';
 
 function App() {
   return (
-    <BrowserRouter basename="/atlantis-nexus">
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<LandingLayout />} />
         <Route path="/framework" element={<FrameworkPage />} />
