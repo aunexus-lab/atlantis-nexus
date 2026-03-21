@@ -148,11 +148,14 @@
 
 <body>
   <!--
-    Semantic HTML fallback: visible to crawlers without JavaScript.
-    React replaces this content on mount. This ensures AU Nexus is
-    fully readable by curl, Googlebot (first pass), AI bots, etc.
+    Semantic HTML fallback: readable by crawlers in the source.
+    Hidden visually by CSS to prevent flash. React replaces on mount.
+    <noscript> re-enables visibility for true no-JS environments.
   -->
+  <style>#seo-fallback{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}</style>
+  <noscript><style>#seo-fallback{position:static!important;width:auto!important;height:auto!important;overflow:visible!important;clip:auto!important;white-space:normal!important;max-width:48rem;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;line-height:1.6}</style></noscript>
   <div id="root">
+    <div id="seo-fallback">
     <header>
       <nav aria-label="Main navigation">
         <a href="#principles">Principles</a>
@@ -260,6 +263,7 @@
     <footer>
       <p>&copy; 2026 Atlantis University &middot; AU Nexus Method</p>
     </footer>
+    </div><!-- /seo-fallback -->
   </div>
 
 </body>
