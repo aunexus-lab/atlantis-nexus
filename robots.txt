@@ -1,0 +1,25 @@
+# https://nexus.atlantisuniversity.edu/robots.txt
+# AU Nexus Method — Allow all crawlers
+
+User-agent: *
+Allow: /
+Sitemap: https://nexus.atlantisuniversity.edu/sitemap.xml
+
+# AI Search Bots — explicitly welcome
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
