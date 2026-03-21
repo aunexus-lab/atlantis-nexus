@@ -6,7 +6,28 @@
   <link rel="icon" type="image/png" href="/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AU Nexus Method | Designing Intelligent Academic Systems</title>
-  <meta name="description" content="A structured methodology for designing, orchestrating, and evolving intelligent academic systems through context-aware decisioning and artifact-based construction." />
+
+  <!-- SEO Meta -->
+  <meta name="description" content="The AU Nexus Method is a structured methodology for designing, orchestrating, and evolving intelligent academic systems through context-aware decisioning and artifact-based construction." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://nexus.atlantisuniversity.edu/" />
+  <meta name="keywords" content="nexus method, intelligent academic systems, context-aware decisioning, AI orchestration, artifact-based construction, educational technology, Moodle integration, student activation, learning analytics, academic governance" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AU Nexus Method — Designing Intelligent Academic Systems" />
+  <meta property="og:description" content="A structured methodology with 6 principles, 6 core models, and an 8-step build process for creating context-aware, decision-enabled academic systems." />
+  <meta property="og:url" content="https://nexus.atlantisuniversity.edu/" />
+  <meta property="og:site_name" content="AU Nexus Method" />
+  <meta property="og:image" content="https://nexus.atlantisuniversity.edu/images/og-nexus.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AU Nexus Method" />
+  <meta name="twitter:description" content="A methodology for designing intelligent academic systems." />
+  <meta name="twitter:image" content="https://nexus.atlantisuniversity.edu/images/og-nexus.png" />
 
   <!-- JSON-LD: Static layer (stable, rarely changes) -->
   <script type="application/ld+json" id="ld-static">
@@ -35,11 +56,44 @@
         "name": "AU Nexus Method — Designing Intelligent Academic Systems",
         "isPartOf": { "@id": "https://nexus.atlantisuniversity.edu/#website" },
         "educationalLevel": "Professional / Higher Education",
-        "about": [
-          { "@type": "Thing", "name": "Context-Aware Academic Systems" },
-          { "@type": "Thing", "name": "AI Orchestration" },
-          { "@type": "Thing", "name": "Artifact-Based Construction" },
-          { "@type": "Thing", "name": "Intelligent Systems Design" }
+        "about": {
+          "@type": "Thing",
+          "name": "AU Nexus Method",
+          "description": "A methodology for designing AI-native intelligent academic systems through context-aware decisioning and artifact-based construction."
+        },
+        "teaches": [
+          "AI orchestration in education",
+          "Context-aware academic systems",
+          "Artifact-based system construction",
+          "Model Context Protocol integration",
+          "Student activation and engagement",
+          "Academic governance automation"
+        ]
+      },
+      {
+        "@type": "DefinedTermSet",
+        "name": "AU Nexus Principles",
+        "description": "Six foundational principles of the AU Nexus Method",
+        "hasDefinedTerm": [
+          { "@type": "DefinedTerm", "name": "Context over Content" },
+          { "@type": "DefinedTerm", "name": "Orchestration over Static Flow" },
+          { "@type": "DefinedTerm", "name": "Artifacts over Features" },
+          { "@type": "DefinedTerm", "name": "Systems over Interfaces" },
+          { "@type": "DefinedTerm", "name": "Human-in-the-Loop by Design" },
+          { "@type": "DefinedTerm", "name": "Continuous Adaptation" }
+        ]
+      },
+      {
+        "@type": "DefinedTermSet",
+        "name": "AU Nexus Core Models",
+        "description": "Six interconnected models that define how intelligent academic systems are structured",
+        "hasDefinedTerm": [
+          { "@type": "DefinedTerm", "name": "Context Model" },
+          { "@type": "DefinedTerm", "name": "Orchestration Model" },
+          { "@type": "DefinedTerm", "name": "Artifact Model" },
+          { "@type": "DefinedTerm", "name": "Experience Model" },
+          { "@type": "DefinedTerm", "name": "Integration Model" },
+          { "@type": "DefinedTerm", "name": "Governance Model" }
         ]
       },
       {
@@ -65,7 +119,7 @@
         "step": [
           { "@type": "HowToStep", "position": 1, "name": "Define the Capability", "text": "Determine what you want to achieve. Example: increase student daily engagement." },
           { "@type": "HowToStep", "position": 2, "name": "Identify Context Signals", "text": "Determine what data you need: last access, progress, course enrollment." },
-          { "@type": "HowToStep", "position": 3, "name": "Define Decision Logic", "text": "Establish how to decide: IF inactivity > 48h → medium risk, IF > 72h → high risk." },
+          { "@type": "HowToStep", "position": 3, "name": "Define Decision Logic", "text": "Establish how to decide: IF inactivity > 48h = medium risk, IF > 72h = high risk." },
           { "@type": "HowToStep", "position": 4, "name": "Design the Artifact", "text": "Define the inputs, logic, outputs, and interactions of the system." },
           { "@type": "HowToStep", "position": 5, "name": "Implement Intervention", "text": "Define how the system acts: show message, send notification, change experience." },
           { "@type": "HowToStep", "position": 6, "name": "Deliver Experience", "text": "Surface the intervention: Moodle block, dashboard, email, or portal." },
@@ -91,7 +145,121 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <!--
+    Semantic HTML fallback: visible to crawlers without JavaScript.
+    React replaces this content on mount. This ensures AU Nexus is
+    fully readable by curl, Googlebot (first pass), AI bots, etc.
+  -->
+  <div id="root">
+    <header>
+      <nav aria-label="Main navigation">
+        <a href="#principles">Principles</a>
+        <a href="#models">Models</a>
+        <a href="#build">Build Process</a>
+        <a href="#loop">Core Loop</a>
+        <a href="#validation">Validation</a>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <section id="hero">
+          <h1>AU Nexus Method — A Methodology for Designing Intelligent Academic Systems</h1>
+          <p><strong>The AU Nexus Method</strong> is a structured methodology for designing, orchestrating, and evolving intelligent academic systems. It defines how to build systems that understand context, make decisions, and generate artifacts that transform institutional operations.</p>
+          <blockquote>Nexus is not what we built. It is how we build.</blockquote>
+          <p>Traditional educational technology treats systems as isolated tools. The Nexus Method treats them as an interconnected ecosystem of context-aware, decision-enabled capabilities.</p>
+        </section>
+
+        <section id="principles">
+          <h2>Principles</h2>
+          <p>These principles are mandatory. Without them, there is no Nexus.</p>
+          <ol>
+            <li><strong>Context over Content</strong> — The system responds to the user's state, not just displays content.</li>
+            <li><strong>Orchestration over Static Flow</strong> — Experiences are not linear — they are dynamically decided.</li>
+            <li><strong>Artifacts over Features</strong> — Complete capabilities are built, not isolated functionalities.</li>
+            <li><strong>Systems over Interfaces</strong> — The value is in the logic, not the UI.</li>
+            <li><strong>Human-in-the-Loop by Design</strong> — AI proposes, humans validate when necessary.</li>
+            <li><strong>Continuous Adaptation</strong> — The system evolves based on behavior and outcomes.</li>
+          </ol>
+        </section>
+
+        <section id="models">
+          <h2>Core Models</h2>
+          <p>Six interconnected models that define how intelligent academic systems are structured, connected, and governed.</p>
+          <dl>
+            <dt>Context Model</dt>
+            <dd>Defines what information matters: user state, academic state, behavioral signals, system state.</dd>
+            <dt>Orchestration Model</dt>
+            <dd>Coordinates decision-making across systems: routing logic, priority rules, conditional flows.</dd>
+            <dt>Artifact Model</dt>
+            <dd>Structures system capabilities: inputs, decision logic, outputs, interactions.</dd>
+            <dt>Experience Model</dt>
+            <dd>Defines how users interact with the system: dashboards, notifications, portals, blocks.</dd>
+            <dt>Integration Model</dt>
+            <dd>Connects external systems: Moodle, SIS, Entra ID, MCP servers.</dd>
+            <dt>Governance Model</dt>
+            <dd>Ensures compliance, auditing, and institutional oversight across all operations.</dd>
+          </dl>
+        </section>
+
+        <section id="build">
+          <h2>Build Process</h2>
+          <p>The process that makes the method actionable. Eight steps from capability definition to continuous iteration.</p>
+          <ol>
+            <li><strong>Define the Capability</strong> — What do you want to achieve? Example: increase student daily engagement.</li>
+            <li><strong>Identify Context Signals</strong> — What data do you need? Last access, progress, course enrollment.</li>
+            <li><strong>Define Decision Logic</strong> — How do you decide? IF inactivity &gt; 48h → medium risk. IF &gt; 72h → high risk.</li>
+            <li><strong>Design the Artifact</strong> — What are the inputs, logic, outputs, and interactions?</li>
+            <li><strong>Implement Intervention</strong> — How does the system act? Show message, send notification, change experience.</li>
+            <li><strong>Deliver Experience</strong> — Where does it live? Moodle block, dashboard, email, portal.</li>
+            <li><strong>Measure Impact</strong> — What do you measure? DAU, engagement rate, completion rate.</li>
+            <li><strong>Iterate</strong> — What improves? Rules, signals, personalization, AI integration.</li>
+          </ol>
+        </section>
+
+        <section id="loop">
+          <h2>The Core Loop</h2>
+          <p>Every artifact operates within this continuous cycle:</p>
+          <ol>
+            <li><strong>Context</strong> — Capture signals from the environment.</li>
+            <li><strong>Decision</strong> — Apply logic to determine the best action.</li>
+            <li><strong>Action</strong> — Execute the intervention.</li>
+            <li><strong>Feedback</strong> — Observe the results.</li>
+            <li><strong>Adaptation</strong> — Evolve the system based on outcomes.</li>
+          </ol>
+          <p>Adaptation feeds back into Context, creating a continuous learning loop.</p>
+        </section>
+
+        <section id="validation">
+          <h2>Validation</h2>
+          <p>Validation is the proof that the AU Nexus Method works in real conditions. These are not the method — they are evidence that the method works.</p>
+          <h3>Student Activation (Live)</h3>
+          <p>Detects inactive students, classifies risk, and triggers re-engagement interventions automatically. Uses NexusSIS, CampusMCP, and Moodle.</p>
+          <h3>Course Generation (Live)</h3>
+          <p>Automates course creation, section linking, and student enrollment from the SIS semester tree. Uses NexusSIS, LinkClass, and Entra ID.</p>
+          <h3>Governance Dashboards (In Progress)</h3>
+          <p>Provides institutional visibility into financial status, attendance compliance, and academic operations.</p>
+        </section>
+
+        <section id="identity">
+          <h2>What Makes Nexus Unique</h2>
+          <p>Nexus is not an LMS, not an AI tool, not a plugin. <strong>Nexus is a system for building systems.</strong></p>
+          <p>When applied correctly, you can build: activation systems, adaptive learning systems, governance systems, academic creation systems, and institutional intervention systems.</p>
+        </section>
+
+        <section id="closing">
+          <h2>The Transformation</h2>
+          <p>The AU Nexus Method transforms: Ideas → Features → Fragmented Systems into: Method → Artifacts → Systems → Ecosystem.</p>
+          <p><strong>Nexus is not what we built. It is how we build.</strong></p>
+        </section>
+      </article>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Atlantis University &middot; AU Nexus Method</p>
+    </footer>
+  </div>
+
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
