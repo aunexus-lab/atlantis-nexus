@@ -807,7 +807,7 @@
     .info-panel-before .info-row-title { color: var(--au-dark); }
     .info-panel-after  .info-row-title { color: var(--au-white); }
     .info-row-desc { font-size: 12px; line-height: 1.55; }
-    .info-panel-before .info-row-desc { color: #9ca3af; }
+    .info-panel-before .info-row-desc { color: #4b5563; }
     .info-panel-after  .info-row-desc { color: #9ca3af; }
     .info-row-plugin {
       display: inline-block;
@@ -875,12 +875,36 @@
     .advantage-cell.dark .advantage-desc { color: #9ca3af; }
     .advantage-cell.red  .advantage-desc { color: rgba(255,255,255,0.9); }
 
+    /* ── Campus Resume Infographic ── */
+    .resume-infographic { padding: 80px 0; background: #080808; border-top: 3px solid #f97316; }
+    .resume-infographic .section-eyebrow { color: #f97316; border-color: rgba(249,115,22,0.3); }
+    .resume-infographic .section-title { color: var(--au-white); }
+    .resume-infographic .section-subtitle { color: #9ca3af; }
+    .resume-pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 48px; background: #1a1a1a; }
+    .resume-pillar { background: #111; padding: 40px 32px; }
+    .resume-pillar.pillar-featured { background: rgba(249,115,22,0.06); border-top: 3px solid #f97316; }
+    .resume-pillar-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(249,115,22,0.12); display: flex; align-items: center; justify-content: center; color: #f97316; margin-bottom: 20px; }
+    .resume-pillar-icon svg { width: 22px; height: 22px; stroke-width: 1.75; }
+    .resume-pillar-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #f97316; margin-bottom: 8px; }
+    .resume-pillar-title { font-size: 1.15rem; font-weight: 700; color: var(--au-white); margin-bottom: 12px; line-height: 1.3; }
+    .resume-pillar-desc { font-size: 0.875rem; color: #9ca3af; line-height: 1.65; margin-bottom: 20px; }
+    .resume-pillar-features { list-style: none; }
+    .resume-pillar-features li { font-size: 0.8rem; color: #6b7280; padding: 9px 0; border-bottom: 1px solid #1c1c1c; display: flex; align-items: flex-start; gap: 9px; line-height: 1.45; }
+    .resume-pillar-features li:last-child { border-bottom: none; }
+    .resume-pillar-features li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #f97316; flex-shrink: 0; margin-top: 5px; }
+    .resume-stat-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 2px; background: #1a1a1a; }
+    .resume-stat-cell { background: #0d0d0d; padding: 28px 32px; }
+    .resume-stat-num { font-size: 2.1rem; font-weight: 800; color: #f97316; letter-spacing: -0.04em; line-height: 1; margin-bottom: 6px; }
+    .resume-stat-label { font-size: 0.72rem; color: #6b7280; font-weight: 500; text-transform: uppercase; letter-spacing: 0.09em; }
+
     @media (max-width: 900px) {
       .leadership-grid { grid-template-columns: 1fr; gap: 40px; }
       .infographic-split { grid-template-columns: 1fr; }
       .info-panel-divider { display: none; }
       .scenario-grid { grid-template-columns: 1fr; }
       .advantage-grid { grid-template-columns: 1fr; }
+      .resume-pillars { grid-template-columns: 1fr; }
+      .resume-stat-strip { grid-template-columns: repeat(2,1fr); }
     }
 
     /* ── i18n ── */
@@ -2243,6 +2267,215 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         INFOGRAPHIC 4: CAMPUS RESUME / CAREER SERVICES
+    ══════════════════════════════════════════ -->
+    <section class="resume-infographic" id="infografia-resume">
+      <div class="container">
+        <div class="infographic-header">
+          <div class="section-eyebrow">
+            <span data-lang-inline data-l="es" class="active">Career Services · Campus Resume Builder</span>
+            <span data-lang-inline data-l="en">Career Services · Campus Resume Builder</span>
+            <span data-lang-inline data-l="pt">Career Services · Campus Resume Builder</span>
+          </div>
+          <div data-lang data-l="es" class="active">
+            <h2 class="section-title">El CV que el estudiante<br />nunca habría podido escribir solo.</h2>
+            <p class="section-subtitle">Cada curso completado se convierte en capital profesional. La IA sintetiza, el estudiante destaca, Career Services cierra el ciclo.</p>
+          </div>
+          <div data-lang data-l="en">
+            <h2 class="section-title">The resume the student<br />could never have written alone.</h2>
+            <p class="section-subtitle">Every completed course becomes professional capital. AI synthesizes, the student stands out, Career Services closes the loop.</p>
+          </div>
+          <div data-lang data-l="pt">
+            <h2 class="section-title">O currículo que o estudante<br />nunca teria conseguido escrever sozinho.</h2>
+            <p class="section-subtitle">Cada curso concluído vira capital profissional. A IA sintetiza, o estudante se destaca, o Career Services fecha o ciclo.</p>
+          </div>
+        </div>
+
+        <!-- Three pillars -->
+        <div class="resume-pillars">
+
+          <!-- Pillar 1: Resume Builder -->
+          <div class="resume-pillar pillar-featured">
+            <div class="resume-pillar-icon"><i data-lucide="file-badge"></i></div>
+            <div class="resume-pillar-label">
+              <span data-lang-inline data-l="es" class="active">Constructor de CV</span>
+              <span data-lang-inline data-l="en">Resume Builder</span>
+              <span data-lang-inline data-l="pt">Construtor de CV</span>
+            </div>
+            <div class="resume-pillar-title">
+              <span data-lang-inline data-l="es" class="active">Del historial académico al CV profesional, en segundos.</span>
+              <span data-lang-inline data-l="en">From academic record to professional CV, in seconds.</span>
+              <span data-lang-inline data-l="pt">Do histórico acadêmico ao CV profissional, em segundos.</span>
+            </div>
+            <p class="resume-pillar-desc">
+              <span data-lang-inline data-l="es" class="active">La IA lee los cursos completados del estudiante en Moodle y genera narrativas profesionales por materia. El sistema acumula un portafolio competencial que crece con cada semestre.</span>
+              <span data-lang-inline data-l="en">AI reads the student's completed courses from Moodle and generates professional narratives per subject. The system builds a competency portfolio that grows every semester.</span>
+              <span data-lang-inline data-l="pt">A IA lê os cursos concluídos do estudante no Moodle e gera narrativas profissionais por disciplina. O sistema acumula um portfólio de competências que cresce a cada semestre.</span>
+            </p>
+            <ul class="resume-pillar-features">
+              <li>
+                <span data-lang-inline data-l="es" class="active">Resumen profesional, habilidades y destacados generados por IA</span>
+                <span data-lang-inline data-l="en">AI-generated professional summary, skills, and highlights</span>
+                <span data-lang-inline data-l="pt">Resumo profissional, competências e destaques gerados por IA</span>
+              </li>
+              <li>
+                <span data-lang-inline data-l="es" class="active">Constructor drag &amp; drop con bloques activables y vista previa en vivo</span>
+                <span data-lang-inline data-l="en">Drag &amp; drop builder with toggleable blocks and live preview</span>
+                <span data-lang-inline data-l="pt">Construtor drag &amp; drop com blocos ativáveis e prévia em tempo real</span>
+              </li>
+              <li>
+                <span data-lang-inline data-l="es" class="active">Caché por capas: regeneración incremental, sin re-procesar lo ya generado</span>
+                <span data-lang-inline data-l="en">Layered cache: incremental regeneration, no re-processing prior content</span>
+                <span data-lang-inline data-l="pt">Cache em camadas: regeneração incremental, sem reprocessar o que já foi gerado</span>
+              </li>
+              <li>
+                <span data-lang-inline data-l="es" class="active">Exportación PDF con plantilla institucional de Atlántis</span>
+                <span data-lang-inline data-l="en">PDF export with Atlántis institutional template</span>
+                <span data-lang-inline data-l="pt">Exportação em PDF com modelo institucional da Atlántis</span>
+              </li>
+              <li>
+                <span data-lang-inline data-l="es" class="active">Privacidad: PII eliminado antes de enviar datos a la IA</span>
+                <span data-lang-inline data-l="en">Privacy: PII stripped before data is sent to AI</span>
+                <span data-lang-inline data-l="pt">Privacidade: PII removido antes de enviar dados à IA</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pillar 2: Mock Interview -->
+          <div class="resume-pillar">
+            <div class="resume-pillar-icon"><i data-lucide="mic"></i></div>
+            <div class="resume-pillar-label">
+              <span data-lang-inline data-l="es" class="active">Simulador de entrevistas</span>
+              <span data-lang-inline data-l="en">Interview Simulator</span>
+              <span data-lang-inline data-l="pt">Simulador de entrevistas</span>
+            </div>
+            <div class="resume-pillar-title">
+              <span data-lang-inline data-l="es" class="active">Practica con voz. Recibe retroalimentación real. Llega preparado.</span>
+              <span data-lang-inline data-l="en">Practice with voice. Get real feedback. Arrive prepared.</span>
+              <span data-lang-inline data-l="pt">Pratique com voz. Receba feedback real. Chegue preparado.</span>
+            </div>
+            <p class="resume-pillar-desc">
+              <span data-lang-inline data-l="es" class="active">El simulador conduce entrevistas personalizadas con preguntas adaptadas al perfil del estudiante, o a la descripción de un trabajo específico. El sistema analiza no solo las respuestas, sino cómo se responde.</span>
+              <span data-lang-inline data-l="en">The simulator conducts personalized interviews with questions tailored to the student's profile, or to a specific job description. The system analyzes not only what is said, but how it is said.</span>
+              <span data-lang-inline data-l="pt">O simulador conduz entrevistas personalizadas com perguntas adaptadas ao perfil do estudante ou a uma vaga específica. O sistema analisa não apenas o que é dito, mas como é dito.</span>
+            </p>
+            <ul class="resume-pillar-features">
+              <li>
+                <span data-lang-inline data-l="es" class="active">Entrada por voz con transcripción en tiempo real (Web Speech API)</span>
+                <span data-lang-inline data-l="en">Voice input with real-time transcription (Web Speech API)</span>
+                <span data-lang-inline data-l="pt">Entrada por voz com transcrição em tempo real (Web Speech API)</span>
+              </li>
+              <li>
+                <span data-lang-inline data-l="es" class="active">Métricas de habla: WPM, palabras de relleno, pausas, autocorrecciones</span>
+                <span data-lang-inline data-l="en">Speech metrics: WPM, filler words, pauses, self-corrections</span>
+                <span data-lang-inline data-l="pt">Métricas de fala: WPM, palavras de preenchimento, pausas, autocorreções</span>
+              </li>
+              <li>
+                <span data-lang-inline data-l="es" class="active">Retroalimentación IA sobre entrega vocal, no solo sobre el contenido</span>
+                <span data-lang-inline data-l="en">AI feedback on vocal delivery, not just content</span>
+                <span data-lang-inline data-l="pt">Feedback de IA sobre a entrega vocal, não apenas o conteúdo</span>
+              </li>
+              <li>
+                <span data-lang-inline data-l="es" class="active">Upload de descripción de empleo: preguntas ajustadas a la vacante real</span>
+                <span data-lang-inline data-l="en">Job description upload: questions tailored to the actual vacancy</span>
+                <span data-lang-inline data-l="pt">Upload de descrição de vaga: perguntas ajustadas à vaga real</span>
+              </li>
+              <li>
+                <span data-lang-inline data-l="es" class="active">Rubrica de 4 categorías con score detallado por sesión</span>
+                <span data-lang-inline data-l="en">4-category rubric with detailed per-session score</span>
+                <span data-lang-inline data-l="pt">Rubrica de 4 categorias com pontuação detalhada por sessão</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pillar 3: Admin & Career Services -->
+          <div class="resume-pillar">
+            <div class="resume-pillar-icon"><i data-lucide="layout-dashboard"></i></div>
+            <div class="resume-pillar-label">
+              <span data-lang-inline data-l="es" class="active">Panel administrativo</span>
+              <span data-lang-inline data-l="en">Admin Dashboard</span>
+              <span data-lang-inline data-l="pt">Painel administrativo</span>
+            </div>
+            <div class="resume-pillar-title">
+              <span data-lang-inline data-l="es" class="active">Visibilidad completa para Career Services y administración.</span>
+              <span data-lang-inline data-l="en">Full visibility for Career Services and administration.</span>
+              <span data-lang-inline data-l="pt">Visibilidade completa para o Career Services e a administração.</span>
+            </div>
+            <p class="resume-pillar-desc">
+              <span data-lang-inline data-l="es" class="active">El equipo de Career Services accede a todos los CVs generados, el historial de entrevistas de cada estudiante y puede ajustar los prompts del simulador desde la interfaz, sin tocar código.</span>
+              <span data-lang-inline data-l="en">The Career Services team accesses all generated CVs, each student's interview history, and can adjust simulator prompts from the interface — no code required.</span>
+              <span data-lang-inline data-l="pt">A equipe de Career Services acessa todos os CVs gerados, o histórico de entrevistas de cada estudante e pode ajustar os prompts do simulador pela interface — sem mexer em código.</span>
+            </p>
+            <ul class="resume-pillar-features">
+              <li>
+                <span data-lang-inline data-l="es" class="active">Vista de todos los CVs generados con datos del estudiante</span>
+                <span data-lang-inline data-l="en">View of all generated CVs with student data</span>
+                <span data-lang-inline data-l="pt">Visualização de todos os CVs gerados com dados do estudante</span>
+              </li>
+              <li>
+                <span data-lang-inline data-l="es" class="active">Historial completo de sesiones de entrevista con Q&amp;A y evaluación visual</span>
+                <span data-lang-inline data-l="en">Full interview session history with Q&amp;A viewer and visual assessment</span>
+                <span data-lang-inline data-l="pt">Histórico completo de sessões de entrevista com Q&amp;A e avaliação visual</span>
+              </li>
+              <li>
+                <span data-lang-inline data-l="es" class="active">Editor de prompt del simulador en vivo desde la UI</span>
+                <span data-lang-inline data-l="en">Live simulator prompt editor from the UI</span>
+                <span data-lang-inline data-l="pt">Editor de prompt do simulador em tempo real pela interface</span>
+              </li>
+              <li>
+                <span data-lang-inline data-l="es" class="active">Seguimiento de uso de tokens IA por generación</span>
+                <span data-lang-inline data-l="en">AI token usage tracking per generation</span>
+                <span data-lang-inline data-l="pt">Rastreamento de uso de tokens IA por geração</span>
+              </li>
+              <li>
+                <span data-lang-inline data-l="es" class="active">Créditos y facturación vía Stripe para usuarios externos</span>
+                <span data-lang-inline data-l="en">Credits and billing via Stripe for external users</span>
+                <span data-lang-inline data-l="pt">Créditos e faturamento via Stripe para usuários externos</span>
+              </li>
+            </ul>
+          </div>
+        </div><!-- /resume-pillars -->
+
+        <!-- Stats strip -->
+        <div class="resume-stat-strip">
+          <div class="resume-stat-cell">
+            <div class="resume-stat-num">4</div>
+            <div class="resume-stat-label">
+              <span data-lang-inline data-l="es" class="active">Capas de caché IA</span>
+              <span data-lang-inline data-l="en">AI cache layers</span>
+              <span data-lang-inline data-l="pt">Camadas de cache IA</span>
+            </div>
+          </div>
+          <div class="resume-stat-cell">
+            <div class="resume-stat-num">8</div>
+            <div class="resume-stat-label">
+              <span data-lang-inline data-l="es" class="active">Endpoints AJAX disponibles</span>
+              <span data-lang-inline data-l="en">Available AJAX endpoints</span>
+              <span data-lang-inline data-l="pt">Endpoints AJAX disponíveis</span>
+            </div>
+          </div>
+          <div class="resume-stat-cell">
+            <div class="resume-stat-num">0</div>
+            <div class="resume-stat-label">
+              <span data-lang-inline data-l="es" class="active">PII enviado a la IA</span>
+              <span data-lang-inline data-l="en">PII sent to AI</span>
+              <span data-lang-inline data-l="pt">PII enviado à IA</span>
+            </div>
+          </div>
+          <div class="resume-stat-cell">
+            <div class="resume-stat-num">∞</div>
+            <div class="resume-stat-label">
+              <span data-lang-inline data-l="es" class="active">CVs actualizables cada semestre</span>
+              <span data-lang-inline data-l="en">CVs updatable every semester</span>
+              <span data-lang-inline data-l="pt">CVs atualizáveis a cada semestre</span>
+            </div>
+          </div>
+        </div><!-- /resume-stat-strip -->
+
       </div>
     </section>
 
