@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -679,6 +680,19 @@
     }
     .footer-links a:hover { color: var(--au-black); }
 
+    /* ── Lucide Icons ── */
+    .card-icon svg { width: 22px; height: 22px; stroke-width: 1.75; }
+    .icon-red    svg { color: var(--au-red); }
+    .icon-dark   svg { color: rgba(255,255,255,0.85); }
+    .icon-blue   svg { color: #3b82f6; }
+    .icon-green  svg { color: #22c55e; }
+    .icon-amber  svg { color: #f59e0b; }
+    .icon-purple svg { color: #a855f7; }
+    .icon-teal   svg { color: #14b8a6; }
+    .icon-indigo svg { color: #6366f1; }
+    .pill-icon svg { width: 16px; height: 16px; stroke-width: 2; display: block; }
+    .integration-chip svg { width: 14px; height: 14px; stroke-width: 2; display: block; }
+
     /* ── i18n ── */
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
@@ -821,31 +835,31 @@
         </div>
         <div class="audience-pills">
           <span class="pill pill-owners">
-            <span class="pill-icon">🏛️</span>
+            <span class="pill-icon"><i data-lucide="landmark"></i></span>
             <span data-lang-inline data-l="es" class="active">Dirección Ejecutiva</span>
             <span data-lang-inline data-l="en">Executive Leadership</span>
             <span data-lang-inline data-l="pt">Direção Executiva</span>
           </span>
           <span class="pill pill-admins">
-            <span class="pill-icon">⚙️</span>
+            <span class="pill-icon"><i data-lucide="settings-2"></i></span>
             <span data-lang-inline data-l="es" class="active">Administradores Moodle</span>
             <span data-lang-inline data-l="en">Moodle Administrators</span>
             <span data-lang-inline data-l="pt">Administradores Moodle</span>
           </span>
           <span class="pill pill-academic">
-            <span class="pill-icon">🎓</span>
+            <span class="pill-icon"><i data-lucide="graduation-cap"></i></span>
             <span data-lang-inline data-l="es" class="active">Cuerpo Docente</span>
             <span data-lang-inline data-l="en">Faculty &amp; Instructors</span>
             <span data-lang-inline data-l="pt">Corpo Docente</span>
           </span>
           <span class="pill pill-staff">
-            <span class="pill-icon">🗂️</span>
+            <span class="pill-icon"><i data-lucide="briefcase"></i></span>
             <span data-lang-inline data-l="es" class="active">Staff Académico</span>
             <span data-lang-inline data-l="en">Academic Staff</span>
             <span data-lang-inline data-l="pt">Equipe Acadêmica</span>
           </span>
           <span class="pill pill-students">
-            <span class="pill-icon">📚</span>
+            <span class="pill-icon"><i data-lucide="book-open"></i></span>
             <span data-lang-inline data-l="es" class="active">Estudiantes</span>
             <span data-lang-inline data-l="en">Students</span>
             <span data-lang-inline data-l="pt">Estudantes</span>
@@ -883,7 +897,7 @@
           <!-- ─── 1. COURSE BLUEPRINT — Featured ─── -->
           <div class="plugin-card featured">
             <div class="card-header">
-              <div class="card-icon icon-dark">🧠</div>
+              <div class="card-icon icon-dark"><i data-lucide="cpu"></i></div>
               <span class="card-badge badge-ai">
                 <span data-lang-inline data-l="es" class="active">IA Generativa</span>
                 <span data-lang-inline data-l="en">Generative AI</span>
@@ -956,7 +970,7 @@
           <!-- ─── 2. SYLLABUS INTELLIGENCE ─── -->
           <div class="plugin-card">
             <div class="card-header">
-              <div class="card-icon icon-indigo">📄</div>
+              <div class="card-icon icon-indigo"><i data-lucide="file-text"></i></div>
               <span class="card-badge badge-ai">
                 <span data-lang-inline data-l="es" class="active">IA Asistida</span>
                 <span data-lang-inline data-l="en">AI-Assisted</span>
@@ -1026,7 +1040,7 @@
           <!-- ─── 3. ASK ATLAS / CAMPUS CHAT ─── -->
           <div class="plugin-card">
             <div class="card-header">
-              <div class="card-icon icon-purple">🤖</div>
+              <div class="card-icon icon-purple"><i data-lucide="bot"></i></div>
               <span class="card-badge badge-ai">
                 <span data-lang-inline data-l="es" class="active">Chatbot IA</span>
                 <span data-lang-inline data-l="en">AI Chatbot</span>
@@ -1042,7 +1056,7 @@
               </p>
               <ul class="card-features">
                 <li>Chat en tiempo real integrado como bloque Moodle</li>
-                <li>Modo entrenamiento con feedback (👍👎) para mejorar respuestas</li>
+                <li>Modo entrenamiento con feedback positivo/negativo para mejorar respuestas</li>
                 <li>Dashboard de analíticas con exportación CSV</li>
                 <li>Edición de prompts del sistema en tiempo real</li>
               </ul>
@@ -1055,7 +1069,7 @@
               </p>
               <ul class="card-features">
                 <li>Real-time chat integrated as a Moodle block</li>
-                <li>Training mode with feedback (👍👎) to improve responses</li>
+                <li>Training mode with positive/negative feedback to improve responses</li>
                 <li>Analytics dashboard with CSV export</li>
                 <li>Live system prompt editing and sync</li>
               </ul>
@@ -1068,7 +1082,7 @@
               </p>
               <ul class="card-features">
                 <li>Chat em tempo real integrado como bloco Moodle</li>
-                <li>Modo de treinamento com feedback (👍👎) para melhorar respostas</li>
+                <li>Modo de treinamento com feedback positivo/negativo para melhorar respostas</li>
                 <li>Dashboard de análises com exportação CSV</li>
                 <li>Edição de prompts do sistema em tempo real</li>
               </ul>
@@ -1096,7 +1110,7 @@
           <!-- ─── 4. COURSE EXPLORER ─── -->
           <div class="plugin-card">
             <div class="card-header">
-              <div class="card-icon icon-red">🔭</div>
+              <div class="card-icon icon-red"><i data-lucide="compass"></i></div>
               <span class="card-badge badge-ai">
                 <span data-lang-inline data-l="es" class="active">Embeddings IA</span>
                 <span data-lang-inline data-l="en">AI Embeddings</span>
@@ -1161,7 +1175,7 @@
           <!-- ─── 5. LINKCLASS ─── -->
           <div class="plugin-card">
             <div class="card-header">
-              <div class="card-icon icon-blue">🔗</div>
+              <div class="card-icon icon-blue"><i data-lucide="link-2"></i></div>
               <span class="card-badge">SIS Sync</span>
             </div>
 
@@ -1222,7 +1236,7 @@
           <!-- ─── 6. ATTENDANCE ─── -->
           <div class="plugin-card">
             <div class="card-header">
-              <div class="card-icon icon-green">✅</div>
+              <div class="card-icon icon-green"><i data-lucide="calendar-check"></i></div>
               <span class="card-badge">SIS Sync</span>
             </div>
 
@@ -1283,7 +1297,7 @@
           <!-- ─── 7. FINANCIAL STATUS ─── -->
           <div class="plugin-card">
             <div class="card-header">
-              <div class="card-icon icon-amber">💰</div>
+              <div class="card-icon icon-amber"><i data-lucide="bar-chart-2"></i></div>
               <span class="card-badge">
                 <span data-lang-inline data-l="es" class="active">Finanzas</span>
                 <span data-lang-inline data-l="en">Finance</span>
@@ -1353,7 +1367,7 @@
           <!-- ─── 8. STRIPE GATEWAY ─── -->
           <div class="plugin-card">
             <div class="card-header">
-              <div class="card-icon icon-teal">💳</div>
+              <div class="card-icon icon-teal"><i data-lucide="credit-card"></i></div>
               <span class="card-badge">
                 <span data-lang-inline data-l="es" class="active">Pagos</span>
                 <span data-lang-inline data-l="en">Payments</span>
@@ -1418,7 +1432,7 @@
           <!-- ─── 9. AU NEXUS BASE ─── -->
           <div class="plugin-card">
             <div class="card-header">
-              <div class="card-icon icon-red">⚡</div>
+              <div class="card-icon icon-red"><i data-lucide="layers"></i></div>
               <span class="card-badge">
                 <span data-lang-inline data-l="es" class="active">Hub Base</span>
                 <span data-lang-inline data-l="en">Base Hub</span>
@@ -1506,14 +1520,14 @@
         </div>
 
         <div class="integration-logos">
-          <div class="integration-chip">🎓 Moodle LMS</div>
-          <div class="integration-chip">🏫 NexusSIS</div>
-          <div class="integration-chip">🤖 Azure OpenAI</div>
-          <div class="integration-chip">💳 Stripe</div>
-          <div class="integration-chip">🧠 CampusMCP</div>
-          <div class="integration-chip">📊 Analytics API</div>
-          <div class="integration-chip">🐍 Python FastAPI</div>
-          <div class="integration-chip">🌐 REST Webhooks</div>
+          <div class="integration-chip"><i data-lucide="graduation-cap"></i> Moodle LMS</div>
+          <div class="integration-chip"><i data-lucide="database"></i> NexusSIS</div>
+          <div class="integration-chip"><i data-lucide="sparkles"></i> Azure OpenAI</div>
+          <div class="integration-chip"><i data-lucide="credit-card"></i> Stripe</div>
+          <div class="integration-chip"><i data-lucide="bot"></i> CampusMCP</div>
+          <div class="integration-chip"><i data-lucide="bar-chart-2"></i> Analytics API</div>
+          <div class="integration-chip"><i data-lucide="terminal"></i> Python FastAPI</div>
+          <div class="integration-chip"><i data-lucide="globe"></i> REST Webhooks</div>
         </div>
       </div>
     </section>
@@ -1610,6 +1624,9 @@
         : 'es';
       setLang(lang);
     })();
+
+    // Init Lucide icons
+    lucide.createIcons();
   </script>
 
 </body>
