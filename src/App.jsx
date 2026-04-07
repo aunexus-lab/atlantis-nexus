@@ -72,7 +72,7 @@ function AppLayout() {
               onMouseEnter={e => e.currentTarget.style.background = '#9B0B22'}
               onMouseLeave={e => e.currentTarget.style.background = '#C8102E'}
             >
-              Plugins ↗
+              Nexus Suite ↗
             </a>
           </nav>
         </div>
