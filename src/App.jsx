@@ -65,6 +65,15 @@ function AppLayout() {
                 {item.label}
               </a>
             ))}
+            <a
+              href="/plugins.html"
+              className="ml-2 px-3 py-1.5 rounded-lg text-sm font-semibold text-white no-underline transition-all duration-200"
+              style={{ background: '#C8102E' }}
+              onMouseEnter={e => e.currentTarget.style.background = '#9B0B22'}
+              onMouseLeave={e => e.currentTarget.style.background = '#C8102E'}
+            >
+              Plugins ↗
+            </a>
           </nav>
         </div>
       </header>
