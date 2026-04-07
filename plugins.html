@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AU Nexus Plugins — Atlántis University</title>
+  <meta name="description"
+    content="Ecosistema de plugins Moodle premium para Atlántis University. Inteligencia artificial, sincronización SIS, pagos y más." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --au-red:       #C8102E;
+      --au-red-dark:  #9B0B22;
+      --au-red-light: #E8203E;
+      --au-black:     #0a0a0a;
+      --au-charcoal:  #111111;
+      --au-dark:      #1a1a1a;
+      --au-gray-900:  #1f1f1f;
+      --au-gray-700:  #374151;
+      --au-gray-500:  #6b7280;
+      --au-gray-300:  #d1d5db;
+      --au-gray-100:  #f3f4f6;
+      --au-white:     #ffffff;
+      --au-cream:     #fafafa;
+
+      --font: 'Inter', system-ui, sans-serif;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.14);
+      --transition: all 0.2s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--au-white);
+      color: var(--au-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Language Switcher ── */
+    #lang-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: var(--au-black);
+      border-bottom: 1px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      padding: 6px 24px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid #333;
+      color: #888;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .lang-btn:hover { border-color: #555; color: #ccc; }
+    .lang-btn.active {
+      background: var(--au-red);
+      border-color: var(--au-red);
+      color: var(--au-white);
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 33px; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--au-gray-100);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-dot {
+      width: 28px;
+      height: 28px;
+      background: var(--au-red);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-dot svg { width: 16px; height: 16px; fill: white; }
+
+    .nav-logo-text {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--au-black);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--au-gray-500);
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--au-black); }
+
+    .nav-cta {
+      background: var(--au-black);
+      color: var(--au-white) !important;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--au-red) !important; color: white !important; }
+
+    /* ── Main layout ── */
+    main { padding-top: 97px; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--au-black);
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200,16,46,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(200,16,46,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(200,16,46,0.15);
+      border: 1px solid rgba(200,16,46,0.3);
+      color: #ff4d6d;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: #ff4d6d;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      color: var(--au-white);
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 span { color: var(--au-red-light); }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: #9ca3af;
+      max-width: 620px;
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 48px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      border-top: 1px solid #222;
+      padding-top: 40px;
+    }
+
+    .hero-stat-num {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--au-white);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat-num span { color: var(--au-red-light); }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: #6b7280;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── Audience Pills ── */
+    .audience-section {
+      padding: 48px 0 32px;
+      background: var(--au-cream);
+      border-bottom: 1px solid var(--au-gray-100);
+    }
+
+    .audience-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--au-gray-500);
+      margin-bottom: 16px;
+    }
+
+    .audience-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1.5px solid;
+    }
+
+    .pill-icon { font-size: 16px; }
+
+    .pill-owners    { background: #fff1f3; border-color: #fecdd3; color: #be123c; }
+    .pill-admins    { background: #fef3c7; border-color: #fde68a; color: #92400e; }
+    .pill-academic  { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+    .pill-staff     { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+    .pill-students  { background: #faf5ff; border-color: #e9d5ff; color: #7e22ce; }
+
+    /* ── Section titles ── */
+    .section-header {
+      text-align: center;
+      padding: 72px 0 48px;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--au-red);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--au-black);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--au-gray-500);
+      max-width: 560px;
+      margin: 0 auto;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── Plugin Grid ── */
+    .plugins-section { padding-bottom: 80px; }
+
+    .plugins-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    /* Featured plugin spans 2 cols */
+    .plugin-card.featured {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 768px) {
+      .plugin-card.featured { grid-column: span 1; }
+    }
+
+    .plugin-card {
+      background: var(--au-white);
+      border: 1px solid var(--au-gray-100);
+      border-radius: var(--radius);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .plugin-card:hover {
+      border-color: var(--au-gray-300);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .plugin-card.featured {
+      background: var(--au-black);
+      border-color: #1a1a1a;
+      color: var(--au-white);
+    }
+
+    .plugin-card.featured::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(200,16,46,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .plugin-card.featured:hover {
+      border-color: #2a2a2a;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .icon-red   { background: rgba(200,16,46,0.1); }
+    .icon-dark  { background: rgba(255,255,255,0.08); }
+    .icon-blue  { background: rgba(59,130,246,0.1); }
+    .icon-green { background: rgba(34,197,94,0.1); }
+    .icon-amber { background: rgba(245,158,11,0.1); }
+    .icon-purple{ background: rgba(168,85,247,0.1); }
+    .icon-teal  { background: rgba(20,184,166,0.1); }
+    .icon-indigo{ background: rgba(99,102,241,0.1); }
+
+    .card-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--au-gray-100);
+      color: var(--au-gray-500);
+    }
+
+    .card-badge.badge-ai {
+      background: rgba(200,16,46,0.1);
+      color: var(--au-red);
+    }
+
+    .featured .card-badge {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+    }
+
+    .featured .card-badge.badge-ai {
+      background: rgba(200,16,46,0.25);
+      color: #ff6b80;
+    }
+
+    .card-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--au-black);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .featured .card-name { color: var(--au-white); }
+
+    .card-component {
+      font-size: 11px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: var(--au-gray-500);
+      margin-bottom: 14px;
+    }
+
+    .featured .card-component { color: #555; }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--au-gray-700);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .featured .card-desc { color: #9ca3af; }
+
+    .card-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+
+    .card-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--au-gray-700);
+    }
+
+    .featured .card-features li { color: #9ca3af; }
+
+    .card-features li::before {
+      content: '→';
+      color: var(--au-red);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .featured .card-features li::before { color: #ff4d6d; }
+
+    .card-audiences {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 20px;
+      border-top: 1px solid var(--au-gray-100);
+    }
+
+    .featured .card-audiences { border-top-color: #222; }
+
+    .audience-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .tag-owner   { background: #fff1f3; color: #be123c; }
+    .tag-admin   { background: #fef3c7; color: #92400e; }
+    .tag-faculty { background: #eff6ff; color: #1e40af; }
+    .tag-staff   { background: #f0fdf4; color: #166534; }
+    .tag-student { background: #faf5ff; color: #7e22ce; }
+
+    .featured .tag-owner   { background: rgba(190,18,60,0.2);  color: #ff6b80; }
+    .featured .tag-admin   { background: rgba(146,64,14,0.2);  color: #fbbf24; }
+    .featured .tag-faculty { background: rgba(30,64,175,0.2);  color: #93c5fd; }
+    .featured .tag-staff   { background: rgba(22,101,52,0.2);  color: #86efac; }
+    .featured .tag-student { background: rgba(126,34,206,0.2); color: #d8b4fe; }
+
+    /* ── Integration Banner ── */
+    .integration-section {
+      background: var(--au-gray-100);
+      border-top: 1px solid var(--au-gray-100);
+      border-bottom: 1px solid var(--au-gray-100);
+      padding: 64px 0;
+      text-align: center;
+    }
+
+    .integration-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .integration-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--au-white);
+      border: 1px solid var(--au-gray-300);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--au-gray-700);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ── CTA Section ── */
+    .cta-section {
+      background: var(--au-black);
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 400px;
+      background: radial-gradient(ellipse, rgba(200,16,46,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--au-white);
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .cta-section p {
+      color: #6b7280;
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--au-red);
+      color: var(--au-white);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .btn-primary:hover {
+      background: var(--au-red-light);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(200,16,46,0.35);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #9ca3af;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      border: 1px solid #333;
+      transition: var(--transition);
+      margin-left: 12px;
+      position: relative;
+    }
+
+    .btn-secondary:hover {
+      border-color: #555;
+      color: var(--au-white);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--au-gray-100);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--au-gray-500);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--au-gray-500);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .footer-links a:hover { color: var(--au-black); }
+
+    /* ── i18n ── */
+    [data-lang] { display: none; }
+    [data-lang].active { display: block; }
+    [data-lang-inline] { display: none; }
+    [data-lang-inline].active { display: inline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .plugins-grid { grid-template-columns: 1fr; }
+      .plugin-card.featured { grid-column: span 1; }
+      .hero-stats { gap: 24px; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 60px 0 50px; }
+      .plugin-card { padding: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Language Bar ── -->
+  <div id="lang-bar">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('pt')">PT</button>
+  </div>
+
+  <!-- ── Navigation ── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-dot">
+          <svg viewBox="0 0 16 16"><path d="M8 1L1 14h14L8 1z"/></svg>
+        </div>
+        <span class="nav-logo-text">Atlantis Nexus</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#plugins">
+          <span data-lang-inline data-l="es" class="active">Plugins</span>
+          <span data-lang-inline data-l="en">Plugins</span>
+          <span data-lang-inline data-l="pt">Plugins</span>
+        </a></li>
+        <li><a href="#integraciones">
+          <span data-lang-inline data-l="es" class="active">Integraciones</span>
+          <span data-lang-inline data-l="en">Integrations</span>
+          <span data-lang-inline data-l="pt">Integrações</span>
+        </a></li>
+        <li><a href="/" class="nav-cta">
+          <span data-lang-inline data-l="es" class="active">← Inicio</span>
+          <span data-lang-inline data-l="en">← Home</span>
+          <span data-lang-inline data-l="pt">← Início</span>
+        </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ══════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════ -->
+    <section class="hero">
+      <div class="container">
+
+        <!-- ES -->
+        <div data-lang data-l="es" class="active">
+          <div class="hero-tag">Ecosistema Moodle · AU Nexus</div>
+          <h1>Tecnología que<br /><span>transforma</span> la academia.</h1>
+          <p class="hero-sub">
+            Nueve plugins premium diseñados para Atlántis University: inteligencia artificial,
+            sincronización SIS en tiempo real, gestión de silabus, asistentes virtuales y más.
+            Todo integrado. Todo en Moodle.
+          </p>
+        </div>
+
+        <!-- EN -->
+        <div data-lang data-l="en">
+          <div class="hero-tag">Moodle Ecosystem · AU Nexus</div>
+          <h1>Technology that<br /><span>transforms</span> academia.</h1>
+          <p class="hero-sub">
+            Nine premium plugins built for Atlántis University: artificial intelligence,
+            real-time SIS sync, syllabus management, virtual advisors, and more.
+            All integrated. All in Moodle.
+          </p>
+        </div>
+
+        <!-- PT -->
+        <div data-lang data-l="pt">
+          <div class="hero-tag">Ecossistema Moodle · AU Nexus</div>
+          <h1>Tecnologia que<br /><span>transforma</span> a academia.</h1>
+          <p class="hero-sub">
+            Nove plugins premium desenvolvidos para a Atlántis University: inteligência artificial,
+            sincronização SIS em tempo real, gestão de ementas, assistentes virtuais e muito mais.
+            Tudo integrado. Tudo no Moodle.
+          </p>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">9<span>+</span></div>
+            <div class="hero-stat-label" data-lang-inline data-l="es" class="active">Plugins Activos</div>
+            <div class="hero-stat-label" data-lang-inline data-l="en">Active Plugins</div>
+            <div class="hero-stat-label" data-lang-inline data-l="pt">Plugins Ativos</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">5<span>×</span></div>
+            <div class="hero-stat-label" data-lang-inline data-l="es" class="active">Integración IA</div>
+            <div class="hero-stat-label" data-lang-inline data-l="en">AI Integration</div>
+            <div class="hero-stat-label" data-lang-inline data-l="pt">Integração IA</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">100<span>%</span></div>
+            <div class="hero-stat-label" data-lang-inline data-l="es" class="active">Open Source</div>
+            <div class="hero-stat-label" data-lang-inline data-l="en">Open Source</div>
+            <div class="hero-stat-label" data-lang-inline data-l="pt">Código Aberto</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">Moodle <span>4.1+</span></div>
+            <div class="hero-stat-label" data-lang-inline data-l="es" class="active">Compatibilidad</div>
+            <div class="hero-stat-label" data-lang-inline data-l="en">Compatibility</div>
+            <div class="hero-stat-label" data-lang-inline data-l="pt">Compatibilidade</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         AUDIENCE
+    ══════════════════════════════════════════ -->
+    <section class="audience-section">
+      <div class="container">
+        <div class="audience-label">
+          <span data-lang-inline data-l="es" class="active">Diseñado para toda la comunidad</span>
+          <span data-lang-inline data-l="en">Designed for the entire community</span>
+          <span data-lang-inline data-l="pt">Projetado para toda a comunidade</span>
+        </div>
+        <div class="audience-pills">
+          <span class="pill pill-owners">
+            <span class="pill-icon">🏛️</span>
+            <span data-lang-inline data-l="es" class="active">Dirección Ejecutiva</span>
+            <span data-lang-inline data-l="en">Executive Leadership</span>
+            <span data-lang-inline data-l="pt">Direção Executiva</span>
+          </span>
+          <span class="pill pill-admins">
+            <span class="pill-icon">⚙️</span>
+            <span data-lang-inline data-l="es" class="active">Administradores Moodle</span>
+            <span data-lang-inline data-l="en">Moodle Administrators</span>
+            <span data-lang-inline data-l="pt">Administradores Moodle</span>
+          </span>
+          <span class="pill pill-academic">
+            <span class="pill-icon">🎓</span>
+            <span data-lang-inline data-l="es" class="active">Cuerpo Docente</span>
+            <span data-lang-inline data-l="en">Faculty &amp; Instructors</span>
+            <span data-lang-inline data-l="pt">Corpo Docente</span>
+          </span>
+          <span class="pill pill-staff">
+            <span class="pill-icon">🗂️</span>
+            <span data-lang-inline data-l="es" class="active">Staff Académico</span>
+            <span data-lang-inline data-l="en">Academic Staff</span>
+            <span data-lang-inline data-l="pt">Equipe Acadêmica</span>
+          </span>
+          <span class="pill pill-students">
+            <span class="pill-icon">📚</span>
+            <span data-lang-inline data-l="es" class="active">Estudiantes</span>
+            <span data-lang-inline data-l="en">Students</span>
+            <span data-lang-inline data-l="pt">Estudantes</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         PLUGINS
+    ══════════════════════════════════════════ -->
+    <section class="plugins-section" id="plugins">
+      <div class="container">
+
+        <!-- Section header -->
+        <div class="section-header">
+          <div class="section-eyebrow">AU Nexus · Plugin Suite</div>
+
+          <div data-lang data-l="es" class="active">
+            <h2 class="section-title">Un ecosistema construido<br />para la excelencia académica.</h2>
+            <p class="section-subtitle">Cada plugin resuelve un desafío real de la institución. Juntos, forman una plataforma integrada de gestión académica impulsada por IA.</p>
+          </div>
+          <div data-lang data-l="en">
+            <h2 class="section-title">An ecosystem built<br />for academic excellence.</h2>
+            <p class="section-subtitle">Each plugin solves a real institutional challenge. Together, they form an AI-powered integrated academic management platform.</p>
+          </div>
+          <div data-lang data-l="pt">
+            <h2 class="section-title">Um ecossistema construído<br />para a excelência acadêmica.</h2>
+            <p class="section-subtitle">Cada plugin resolve um desafio institucional real. Juntos, formam uma plataforma integrada de gestão acadêmica impulsionada por IA.</p>
+          </div>
+        </div>
+
+        <div class="plugins-grid">
+
+          <!-- ─── 1. COURSE BLUEPRINT — Featured ─── -->
+          <div class="plugin-card featured">
+            <div class="card-header">
+              <div class="card-icon icon-dark">🧠</div>
+              <span class="card-badge badge-ai">
+                <span data-lang-inline data-l="es" class="active">IA Generativa</span>
+                <span data-lang-inline data-l="en">Generative AI</span>
+                <span data-lang-inline data-l="pt">IA Generativa</span>
+              </span>
+            </div>
+
+            <div data-lang data-l="es" class="active">
+              <div class="card-name">Course Blueprint Engine</div>
+              <div class="card-component">local_courseblueprint · Moodle 5.0+</div>
+              <p class="card-desc">
+                Su copiloto de diseño instruccional. Genera estructuras de cursos completas —módulos, evaluaciones, recursos y políticas— en segundos mediante Azure OpenAI. Los docentes dictan los objetivos; la IA construye el esqueleto académico.
+              </p>
+              <ul class="card-features">
+                <li>Generación de blueprints con un solo prompt en lenguaje natural</li>
+                <li>Ciclo de vida completo: borrador → revisión → listo → desplegado</li>
+                <li>Bloqueo de secciones para proteger contenido validado</li>
+                <li>Historial de versiones con diff y restauración de snapshots</li>
+                <li>Despliegue directo a cualquier curso Moodle existente</li>
+              </ul>
+            </div>
+            <div data-lang data-l="en">
+              <div class="card-name">Course Blueprint Engine</div>
+              <div class="card-component">local_courseblueprint · Moodle 5.0+</div>
+              <p class="card-desc">
+                Your instructional design copilot. Generate complete course structures — modules, assessments, resources, and policies — in seconds using Azure OpenAI. Faculty define the objectives; AI builds the academic skeleton.
+              </p>
+              <ul class="card-features">
+                <li>Blueprint generation from a single natural-language prompt</li>
+                <li>Full lifecycle: draft → review → ready → deployed</li>
+                <li>Section locking to protect validated content from AI overwrites</li>
+                <li>Version history with diff view and snapshot restore</li>
+                <li>Direct deployment to any existing Moodle course</li>
+              </ul>
+            </div>
+            <div data-lang data-l="pt">
+              <div class="card-name">Course Blueprint Engine</div>
+              <div class="card-component">local_courseblueprint · Moodle 5.0+</div>
+              <p class="card-desc">
+                Seu copiloto de design instrucional. Gere estruturas completas de cursos — módulos, avaliações, recursos e políticas — em segundos com Azure OpenAI. Os docentes definem os objetivos; a IA constrói o esqueleto acadêmico.
+              </p>
+              <ul class="card-features">
+                <li>Geração de blueprints a partir de um único prompt em linguagem natural</li>
+                <li>Ciclo de vida completo: rascunho → revisão → pronto → implantado</li>
+                <li>Bloqueio de seções para proteger conteúdo validado</li>
+                <li>Histórico de versões com diff e restauração de snapshots</li>
+                <li>Implantação direta em qualquer curso Moodle existente</li>
+              </ul>
+            </div>
+
+            <div class="card-audiences">
+              <span class="audience-tag tag-faculty">
+                <span data-lang-inline data-l="es" class="active">Docentes</span>
+                <span data-lang-inline data-l="en">Faculty</span>
+                <span data-lang-inline data-l="pt">Docentes</span>
+              </span>
+              <span class="audience-tag tag-admin">
+                <span data-lang-inline data-l="es" class="active">Administradores</span>
+                <span data-lang-inline data-l="en">Admins</span>
+                <span data-lang-inline data-l="pt">Administradores</span>
+              </span>
+              <span class="audience-tag tag-owner">
+                <span data-lang-inline data-l="es" class="active">Dirección</span>
+                <span data-lang-inline data-l="en">Leadership</span>
+                <span data-lang-inline data-l="pt">Direção</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- ─── 2. SYLLABUS INTELLIGENCE ─── -->
+          <div class="plugin-card">
+            <div class="card-header">
+              <div class="card-icon icon-indigo">📄</div>
+              <span class="card-badge badge-ai">
+                <span data-lang-inline data-l="es" class="active">IA Asistida</span>
+                <span data-lang-inline data-l="en">AI-Assisted</span>
+                <span data-lang-inline data-l="pt">IA Assistida</span>
+              </span>
+            </div>
+
+            <div data-lang data-l="es" class="active">
+              <div class="card-name">Syllabus Intelligence</div>
+              <div class="card-component">local_syintelligence · Moodle 4.0+</div>
+              <p class="card-desc">
+                El motor de silabus empresarial de Atlántis. Centraliza, versiona y publica silabus por programa, escuela y universidad. Con asistente de IA para redacción y flujo de aprobación institucional.
+              </p>
+              <ul class="card-features">
+                <li>Gestión de programas y versiones académicas</li>
+                <li>Flujo de aprobación: borrador → revisión → aprobado → publicado</li>
+                <li>Biblioteca de plantillas por universidad, escuela y programa</li>
+                <li>Redacción asistida por IA con trazabilidad de cambios</li>
+              </ul>
+            </div>
+            <div data-lang data-l="en">
+              <div class="card-name">Syllabus Intelligence</div>
+              <div class="card-component">local_syintelligence · Moodle 4.0+</div>
+              <p class="card-desc">
+                Atlántis's enterprise syllabus engine. Centralizes, versions, and publishes syllabi by program, school, and university. With AI writing assistant and institutional approval workflow.
+              </p>
+              <ul class="card-features">
+                <li>Program and academic version management</li>
+                <li>Approval workflow: draft → review → approved → published</li>
+                <li>Template library by university, school, and program scope</li>
+                <li>AI-assisted writing with full change traceability</li>
+              </ul>
+            </div>
+            <div data-lang data-l="pt">
+              <div class="card-name">Syllabus Intelligence</div>
+              <div class="card-component">local_syintelligence · Moodle 4.0+</div>
+              <p class="card-desc">
+                O motor de ementas empresarial da Atlántis. Centraliza, versiona e publica ementas por programa, escola e universidade. Com assistente de escrita por IA e fluxo de aprovação institucional.
+              </p>
+              <ul class="card-features">
+                <li>Gestão de programas e versões acadêmicas</li>
+                <li>Fluxo de aprovação: rascunho → revisão → aprovado → publicado</li>
+                <li>Biblioteca de modelos por universidade, escola e programa</li>
+                <li>Redação assistida por IA com rastreabilidade completa</li>
+              </ul>
+            </div>
+
+            <div class="card-audiences">
+              <span class="audience-tag tag-faculty">
+                <span data-lang-inline data-l="es" class="active">Docentes</span>
+                <span data-lang-inline data-l="en">Faculty</span>
+                <span data-lang-inline data-l="pt">Docentes</span>
+              </span>
+              <span class="audience-tag tag-admin">
+                <span data-lang-inline data-l="es" class="active">Administradores</span>
+                <span data-lang-inline data-l="en">Admins</span>
+                <span data-lang-inline data-l="pt">Administradores</span>
+              </span>
+              <span class="audience-tag tag-owner">
+                <span data-lang-inline data-l="es" class="active">Dirección</span>
+                <span data-lang-inline data-l="en">Leadership</span>
+                <span data-lang-inline data-l="pt">Direção</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- ─── 3. ASK ATLAS / CAMPUS CHAT ─── -->
+          <div class="plugin-card">
+            <div class="card-header">
+              <div class="card-icon icon-purple">🤖</div>
+              <span class="card-badge badge-ai">
+                <span data-lang-inline data-l="es" class="active">Chatbot IA</span>
+                <span data-lang-inline data-l="en">AI Chatbot</span>
+                <span data-lang-inline data-l="pt">Chatbot IA</span>
+              </span>
+            </div>
+
+            <div data-lang data-l="es" class="active">
+              <div class="card-name">Ask ATLAS</div>
+              <div class="card-component">block_campuschat · Moodle 4.1+</div>
+              <p class="card-desc">
+                El asesor académico virtual disponible 24/7 directamente en Moodle. Los estudiantes preguntan sobre su estado financiero, GPA, cursos y pagos —ATLAS responde con contexto personalizado.
+              </p>
+              <ul class="card-features">
+                <li>Chat en tiempo real integrado como bloque Moodle</li>
+                <li>Modo entrenamiento con feedback (👍👎) para mejorar respuestas</li>
+                <li>Dashboard de analíticas con exportación CSV</li>
+                <li>Edición de prompts del sistema en tiempo real</li>
+              </ul>
+            </div>
+            <div data-lang data-l="en">
+              <div class="card-name">Ask ATLAS</div>
+              <div class="card-component">block_campuschat · Moodle 4.1+</div>
+              <p class="card-desc">
+                The virtual academic advisor available 24/7 directly inside Moodle. Students ask about their financial status, GPA, courses, and payments — ATLAS responds with personalized context.
+              </p>
+              <ul class="card-features">
+                <li>Real-time chat integrated as a Moodle block</li>
+                <li>Training mode with feedback (👍👎) to improve responses</li>
+                <li>Analytics dashboard with CSV export</li>
+                <li>Live system prompt editing and sync</li>
+              </ul>
+            </div>
+            <div data-lang data-l="pt">
+              <div class="card-name">Ask ATLAS</div>
+              <div class="card-component">block_campuschat · Moodle 4.1+</div>
+              <p class="card-desc">
+                O assessor acadêmico virtual disponível 24/7 diretamente no Moodle. Os estudantes perguntam sobre status financeiro, GPA, cursos e pagamentos — ATLAS responde com contexto personalizado.
+              </p>
+              <ul class="card-features">
+                <li>Chat em tempo real integrado como bloco Moodle</li>
+                <li>Modo de treinamento com feedback (👍👎) para melhorar respostas</li>
+                <li>Dashboard de análises com exportação CSV</li>
+                <li>Edição de prompts do sistema em tempo real</li>
+              </ul>
+            </div>
+
+            <div class="card-audiences">
+              <span class="audience-tag tag-student">
+                <span data-lang-inline data-l="es" class="active">Estudiantes</span>
+                <span data-lang-inline data-l="en">Students</span>
+                <span data-lang-inline data-l="pt">Estudantes</span>
+              </span>
+              <span class="audience-tag tag-staff">
+                <span data-lang-inline data-l="es" class="active">Staff</span>
+                <span data-lang-inline data-l="en">Staff</span>
+                <span data-lang-inline data-l="pt">Equipe</span>
+              </span>
+              <span class="audience-tag tag-admin">
+                <span data-lang-inline data-l="es" class="active">Administradores</span>
+                <span data-lang-inline data-l="en">Admins</span>
+                <span data-lang-inline data-l="pt">Administradores</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- ─── 4. COURSE EXPLORER ─── -->
+          <div class="plugin-card">
+            <div class="card-header">
+              <div class="card-icon icon-red">🔭</div>
+              <span class="card-badge badge-ai">
+                <span data-lang-inline data-l="es" class="active">Embeddings IA</span>
+                <span data-lang-inline data-l="en">AI Embeddings</span>
+                <span data-lang-inline data-l="pt">Embeddings IA</span>
+              </span>
+            </div>
+
+            <div data-lang data-l="es" class="active">
+              <div class="card-name">Course Explorer</div>
+              <div class="card-component">local_courseexplorer · Moodle 4.1+</div>
+              <p class="card-desc">
+                Dashboard de cursos con conexión directa a NexusSIS. Visualiza, edita y publica descripciones de cursos en el SIS sin salir de Moodle. Con embeddings semánticos de Azure OpenAI para búsqueda inteligente.
+              </p>
+              <ul class="card-features">
+                <li>Sincronización bidireccional con NexusSIS en tiempo real</li>
+                <li>Editor de descripciones con publicación directa al SIS</li>
+                <li>Importación masiva de descripciones vía CSV</li>
+                <li>Estado de embeddings: embebido, pendiente, obsoleto, error</li>
+              </ul>
+            </div>
+            <div data-lang data-l="en">
+              <div class="card-name">Course Explorer</div>
+              <div class="card-component">local_courseexplorer · Moodle 4.1+</div>
+              <p class="card-desc">
+                Course dashboard with direct NexusSIS connection. Visualize, edit, and publish course descriptions to the SIS without leaving Moodle. With Azure OpenAI semantic embeddings for intelligent search.
+              </p>
+              <ul class="card-features">
+                <li>Real-time bidirectional sync with NexusSIS</li>
+                <li>Description editor with direct SIS publishing</li>
+                <li>Bulk description import via CSV</li>
+                <li>Embedding status: embedded, pending, stale, error</li>
+              </ul>
+            </div>
+            <div data-lang data-l="pt">
+              <div class="card-name">Course Explorer</div>
+              <div class="card-component">local_courseexplorer · Moodle 4.1+</div>
+              <p class="card-desc">
+                Dashboard de cursos com conexão direta ao NexusSIS. Visualize, edite e publique descrições de cursos no SIS sem sair do Moodle. Com embeddings semânticos do Azure OpenAI para busca inteligente.
+              </p>
+              <ul class="card-features">
+                <li>Sincronização bidirecional em tempo real com NexusSIS</li>
+                <li>Editor de descrições com publicação direta no SIS</li>
+                <li>Importação em massa de descrições via CSV</li>
+                <li>Status de embeddings: incorporado, pendente, desatualizado, erro</li>
+              </ul>
+            </div>
+
+            <div class="card-audiences">
+              <span class="audience-tag tag-faculty">
+                <span data-lang-inline data-l="es" class="active">Docentes</span>
+                <span data-lang-inline data-l="en">Faculty</span>
+                <span data-lang-inline data-l="pt">Docentes</span>
+              </span>
+              <span class="audience-tag tag-admin">
+                <span data-lang-inline data-l="es" class="active">Administradores</span>
+                <span data-lang-inline data-l="en">Admins</span>
+                <span data-lang-inline data-l="pt">Administradores</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- ─── 5. LINKCLASS ─── -->
+          <div class="plugin-card">
+            <div class="card-header">
+              <div class="card-icon icon-blue">🔗</div>
+              <span class="card-badge">SIS Sync</span>
+            </div>
+
+            <div data-lang data-l="es" class="active">
+              <div class="card-name">LinkClass</div>
+              <div class="card-component">local_linkclass · Moodle 4.1+</div>
+              <p class="card-desc">
+                El puente entre NexusSIS y Moodle. Crea, vincula y matricula secciones de curso directamente desde los datos del SIS, con una interfaz de árbol para navegar semestres y secciones.
+              </p>
+              <ul class="card-features">
+                <li>Creación de cursos Moodle desde secciones SIS</li>
+                <li>Matriculación masiva de estudiantes desde el roster del SIS</li>
+                <li>Vista árbol por semestre y sección</li>
+                <li>Registro de auditoría completo de sincronizaciones</li>
+              </ul>
+            </div>
+            <div data-lang data-l="en">
+              <div class="card-name">LinkClass</div>
+              <div class="card-component">local_linkclass · Moodle 4.1+</div>
+              <p class="card-desc">
+                The bridge between NexusSIS and Moodle. Create, link, and enroll course sections directly from SIS data, with a tree interface to navigate semesters and sections.
+              </p>
+              <ul class="card-features">
+                <li>Moodle course creation from SIS sections</li>
+                <li>Bulk student enrollment from SIS rosters</li>
+                <li>Tree view by semester and section</li>
+                <li>Full audit log for all synchronizations</li>
+              </ul>
+            </div>
+            <div data-lang data-l="pt">
+              <div class="card-name">LinkClass</div>
+              <div class="card-component">local_linkclass · Moodle 4.1+</div>
+              <p class="card-desc">
+                A ponte entre NexusSIS e Moodle. Crie, vincule e matricule seções de cursos diretamente dos dados do SIS, com interface em árvore para navegar semestres e seções.
+              </p>
+              <ul class="card-features">
+                <li>Criação de cursos Moodle a partir de seções do SIS</li>
+                <li>Matrícula em massa de estudantes a partir do roster do SIS</li>
+                <li>Visão em árvore por semestre e seção</li>
+                <li>Log de auditoria completo de sincronizações</li>
+              </ul>
+            </div>
+
+            <div class="card-audiences">
+              <span class="audience-tag tag-admin">
+                <span data-lang-inline data-l="es" class="active">Administradores</span>
+                <span data-lang-inline data-l="en">Admins</span>
+                <span data-lang-inline data-l="pt">Administradores</span>
+              </span>
+              <span class="audience-tag tag-staff">
+                <span data-lang-inline data-l="es" class="active">Staff</span>
+                <span data-lang-inline data-l="en">Staff</span>
+                <span data-lang-inline data-l="pt">Equipe</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- ─── 6. ATTENDANCE ─── -->
+          <div class="plugin-card">
+            <div class="card-header">
+              <div class="card-icon icon-green">✅</div>
+              <span class="card-badge">SIS Sync</span>
+            </div>
+
+            <div data-lang data-l="es" class="active">
+              <div class="card-name">Attendance Tracker</div>
+              <div class="card-component">local_attendance · Moodle 4.1+</div>
+              <p class="card-desc">
+                Automatiza el registro de asistencia mapeando las entregas de actividades Moodle a fechas de reunión de clase del SIS. Sincronización automática, sin trabajo manual para el docente.
+              </p>
+              <ul class="card-features">
+                <li>Mapeo de actividades Moodle a asistencia semanal</li>
+                <li>Publicación de asistencia en NexusSIS con cola diferida</li>
+                <li>Filtrado por grupos de retención (Hold Groups)</li>
+                <li>Navegación semanal con vista de estado por estudiante</li>
+              </ul>
+            </div>
+            <div data-lang data-l="en">
+              <div class="card-name">Attendance Tracker</div>
+              <div class="card-component">local_attendance · Moodle 4.1+</div>
+              <p class="card-desc">
+                Automates attendance tracking by mapping Moodle activity submissions to SIS class meeting dates. Automatic sync, no manual work for instructors.
+              </p>
+              <ul class="card-features">
+                <li>Moodle activity-to-weekly attendance mapping</li>
+                <li>Attendance posting to NexusSIS with deferred queue</li>
+                <li>Hold Group filtering for retention compliance</li>
+                <li>Weekly navigation with per-student status view</li>
+              </ul>
+            </div>
+            <div data-lang data-l="pt">
+              <div class="card-name">Attendance Tracker</div>
+              <div class="card-component">local_attendance · Moodle 4.1+</div>
+              <p class="card-desc">
+                Automatiza o registro de presença mapeando entregas de atividades Moodle para datas de reunião de turma do SIS. Sincronização automática, sem trabalho manual para o docente.
+              </p>
+              <ul class="card-features">
+                <li>Mapeamento de atividades Moodle para presença semanal</li>
+                <li>Publicação de presença no NexusSIS com fila diferida</li>
+                <li>Filtragem por grupos de retenção (Hold Groups)</li>
+                <li>Navegação semanal com visão de status por estudante</li>
+              </ul>
+            </div>
+
+            <div class="card-audiences">
+              <span class="audience-tag tag-faculty">
+                <span data-lang-inline data-l="es" class="active">Docentes</span>
+                <span data-lang-inline data-l="en">Faculty</span>
+                <span data-lang-inline data-l="pt">Docentes</span>
+              </span>
+              <span class="audience-tag tag-staff">
+                <span data-lang-inline data-l="es" class="active">Staff</span>
+                <span data-lang-inline data-l="en">Staff</span>
+                <span data-lang-inline data-l="pt">Equipe</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- ─── 7. FINANCIAL STATUS ─── -->
+          <div class="plugin-card">
+            <div class="card-header">
+              <div class="card-icon icon-amber">💰</div>
+              <span class="card-badge">
+                <span data-lang-inline data-l="es" class="active">Finanzas</span>
+                <span data-lang-inline data-l="en">Finance</span>
+                <span data-lang-inline data-l="pt">Finanças</span>
+              </span>
+            </div>
+
+            <div data-lang data-l="es" class="active">
+              <div class="card-name">Financial Status</div>
+              <div class="card-component">block_finstatus · Moodle 4.1+</div>
+              <p class="card-desc">
+                Muestra el estado financiero del estudiante directamente en su panel Moodle: balance, programas, estado de matrícula y retenciones de tuition. Integración con flujos de pago.
+              </p>
+              <ul class="card-features">
+                <li>Badges de estado con código de color (Activo, Graduado, etc.)</li>
+                <li>Gestión de cohortes por retención de matrícula</li>
+                <li>Integración con API de facturas y pagos</li>
+                <li>Traducción automática de etiquetas con OpenAI</li>
+              </ul>
+            </div>
+            <div data-lang data-l="en">
+              <div class="card-name">Financial Status</div>
+              <div class="card-component">block_finstatus · Moodle 4.1+</div>
+              <p class="card-desc">
+                Displays student financial status directly on their Moodle dashboard: balance, programs, enrollment status, and tuition holds. Integrated with payment workflows.
+              </p>
+              <ul class="card-features">
+                <li>Color-coded status badges (Active, Graduate, etc.)</li>
+                <li>Tuition hold cohort management</li>
+                <li>Invoice and payment API integration</li>
+                <li>Automatic label translation using OpenAI</li>
+              </ul>
+            </div>
+            <div data-lang data-l="pt">
+              <div class="card-name">Financial Status</div>
+              <div class="card-component">block_finstatus · Moodle 4.1+</div>
+              <p class="card-desc">
+                Exibe o status financeiro do estudante diretamente no painel Moodle: saldo, programas, status de matrícula e bloqueios de anuidade. Integrado com fluxos de pagamento.
+              </p>
+              <ul class="card-features">
+                <li>Badges de status com código de cores (Ativo, Graduado, etc.)</li>
+                <li>Gestão de coortes por bloqueio de matrícula</li>
+                <li>Integração com API de faturas e pagamentos</li>
+                <li>Tradução automática de etiquetas com OpenAI</li>
+              </ul>
+            </div>
+
+            <div class="card-audiences">
+              <span class="audience-tag tag-student">
+                <span data-lang-inline data-l="es" class="active">Estudiantes</span>
+                <span data-lang-inline data-l="en">Students</span>
+                <span data-lang-inline data-l="pt">Estudantes</span>
+              </span>
+              <span class="audience-tag tag-staff">
+                <span data-lang-inline data-l="es" class="active">Staff</span>
+                <span data-lang-inline data-l="en">Staff</span>
+                <span data-lang-inline data-l="pt">Equipe</span>
+              </span>
+              <span class="audience-tag tag-owner">
+                <span data-lang-inline data-l="es" class="active">Dirección</span>
+                <span data-lang-inline data-l="en">Leadership</span>
+                <span data-lang-inline data-l="pt">Direção</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- ─── 8. STRIPE GATEWAY ─── -->
+          <div class="plugin-card">
+            <div class="card-header">
+              <div class="card-icon icon-teal">💳</div>
+              <span class="card-badge">
+                <span data-lang-inline data-l="es" class="active">Pagos</span>
+                <span data-lang-inline data-l="en">Payments</span>
+                <span data-lang-inline data-l="pt">Pagamentos</span>
+              </span>
+            </div>
+
+            <div data-lang data-l="es" class="active">
+              <div class="card-name">Stripe Gateway</div>
+              <div class="card-component">local_stripe · Moodle 4.1+</div>
+              <p class="card-desc">
+                Pasarela de pagos centralizada para Moodle. Gestiona transacciones Stripe de forma segura con webhooks, enrutamiento a plugins consumidores y registro completo de transacciones.
+              </p>
+              <ul class="card-features">
+                <li>Sesiones de Checkout de Stripe con manejo de webhooks</li>
+                <li>Enrutamiento de eventos a plugins consumidores</li>
+                <li>Historial de transacciones con panel de administración</li>
+                <li>Sincronización de transacciones desde el dashboard de Stripe</li>
+              </ul>
+            </div>
+            <div data-lang data-l="en">
+              <div class="card-name">Stripe Gateway</div>
+              <div class="card-component">local_stripe · Moodle 4.1+</div>
+              <p class="card-desc">
+                Centralized payment gateway for Moodle. Manages Stripe transactions securely with webhooks, routing to consumer plugins, and a full transaction log.
+              </p>
+              <ul class="card-features">
+                <li>Stripe Checkout Sessions with webhook handling</li>
+                <li>Event routing to consumer plugins</li>
+                <li>Transaction history with admin panel</li>
+                <li>Transaction sync from Stripe dashboard</li>
+              </ul>
+            </div>
+            <div data-lang data-l="pt">
+              <div class="card-name">Stripe Gateway</div>
+              <div class="card-component">local_stripe · Moodle 4.1+</div>
+              <p class="card-desc">
+                Gateway de pagamentos centralizado para Moodle. Gerencia transações Stripe de forma segura com webhooks, roteamento para plugins consumidores e registro completo de transações.
+              </p>
+              <ul class="card-features">
+                <li>Sessões de Checkout Stripe com tratamento de webhooks</li>
+                <li>Roteamento de eventos para plugins consumidores</li>
+                <li>Histórico de transações com painel de administração</li>
+                <li>Sincronização de transações do dashboard do Stripe</li>
+              </ul>
+            </div>
+
+            <div class="card-audiences">
+              <span class="audience-tag tag-admin">
+                <span data-lang-inline data-l="es" class="active">Administradores</span>
+                <span data-lang-inline data-l="en">Admins</span>
+                <span data-lang-inline data-l="pt">Administradores</span>
+              </span>
+              <span class="audience-tag tag-owner">
+                <span data-lang-inline data-l="es" class="active">Dirección</span>
+                <span data-lang-inline data-l="en">Leadership</span>
+                <span data-lang-inline data-l="pt">Direção</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- ─── 9. AU NEXUS BASE ─── -->
+          <div class="plugin-card">
+            <div class="card-header">
+              <div class="card-icon icon-red">⚡</div>
+              <span class="card-badge">
+                <span data-lang-inline data-l="es" class="active">Hub Base</span>
+                <span data-lang-inline data-l="en">Base Hub</span>
+                <span data-lang-inline data-l="pt">Hub Base</span>
+              </span>
+            </div>
+
+            <div data-lang data-l="es" class="active">
+              <div class="card-name">AU Nexus Core</div>
+              <div class="card-component">local_aunexus · Moodle 4.1+</div>
+              <p class="card-desc">
+                El núcleo del ecosistema AU Nexus. Proporciona configuración compartida, utilidades y la integración base que conecta todos los plugins entre sí con Atlántis University.
+              </p>
+              <ul class="card-features">
+                <li>Configuración central del ecosistema AU Nexus</li>
+                <li>Utilidades y helpers compartidos entre plugins</li>
+                <li>Punto único de configuración de integraciones</li>
+                <li>Versión estable, lista para producción</li>
+              </ul>
+            </div>
+            <div data-lang data-l="en">
+              <div class="card-name">AU Nexus Core</div>
+              <div class="card-component">local_aunexus · Moodle 4.1+</div>
+              <p class="card-desc">
+                The foundation of the AU Nexus ecosystem. Provides shared configuration, utilities, and the base integration layer that connects all plugins to each other and to Atlántis University.
+              </p>
+              <ul class="card-features">
+                <li>Central AU Nexus ecosystem configuration</li>
+                <li>Shared utilities and helpers across plugins</li>
+                <li>Single integration configuration entry point</li>
+                <li>Stable version, production-ready</li>
+              </ul>
+            </div>
+            <div data-lang data-l="pt">
+              <div class="card-name">AU Nexus Core</div>
+              <div class="card-component">local_aunexus · Moodle 4.1+</div>
+              <p class="card-desc">
+                O núcleo do ecossistema AU Nexus. Fornece configuração compartilhada, utilitários e a camada de integração base que conecta todos os plugins entre si e à Atlántis University.
+              </p>
+              <ul class="card-features">
+                <li>Configuração central do ecossistema AU Nexus</li>
+                <li>Utilitários e helpers compartilhados entre plugins</li>
+                <li>Ponto único de configuração de integrações</li>
+                <li>Versão estável, pronta para produção</li>
+              </ul>
+            </div>
+
+            <div class="card-audiences">
+              <span class="audience-tag tag-admin">
+                <span data-lang-inline data-l="es" class="active">Administradores</span>
+                <span data-lang-inline data-l="en">Admins</span>
+                <span data-lang-inline data-l="pt">Administradores</span>
+              </span>
+              <span class="audience-tag tag-owner">
+                <span data-lang-inline data-l="es" class="active">Dirección</span>
+                <span data-lang-inline data-l="en">Leadership</span>
+                <span data-lang-inline data-l="pt">Direção</span>
+              </span>
+            </div>
+          </div>
+
+        </div><!-- /plugins-grid -->
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         INTEGRATIONS
+    ══════════════════════════════════════════ -->
+    <section class="integration-section" id="integraciones">
+      <div class="container">
+        <div class="section-eyebrow">
+          <span data-lang-inline data-l="es" class="active">Tecnologías integradas</span>
+          <span data-lang-inline data-l="en">Integrated technologies</span>
+          <span data-lang-inline data-l="pt">Tecnologias integradas</span>
+        </div>
+
+        <div data-lang data-l="es" class="active">
+          <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.2rem)">El ecosistema que conecta todo.</h2>
+        </div>
+        <div data-lang data-l="en">
+          <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.2rem)">The ecosystem that connects everything.</h2>
+        </div>
+        <div data-lang data-l="pt">
+          <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.2rem)">O ecossistema que conecta tudo.</h2>
+        </div>
+
+        <div class="integration-logos">
+          <div class="integration-chip">🎓 Moodle LMS</div>
+          <div class="integration-chip">🏫 NexusSIS</div>
+          <div class="integration-chip">🤖 Azure OpenAI</div>
+          <div class="integration-chip">💳 Stripe</div>
+          <div class="integration-chip">🧠 CampusMCP</div>
+          <div class="integration-chip">📊 Analytics API</div>
+          <div class="integration-chip">🐍 Python FastAPI</div>
+          <div class="integration-chip">🌐 REST Webhooks</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         CTA
+    ══════════════════════════════════════════ -->
+    <section class="cta-section">
+      <div class="container">
+
+        <div data-lang data-l="es" class="active">
+          <h2>¿Listo para transformar<br />tu institución?</h2>
+          <p>El ecosistema AU Nexus está diseñado para Atlántis University. Cada plugin se integra con tu infraestructura existente de Moodle y NexusSIS.</p>
+        </div>
+        <div data-lang data-l="en">
+          <h2>Ready to transform<br />your institution?</h2>
+          <p>The AU Nexus ecosystem is built for Atlántis University. Each plugin integrates with your existing Moodle and NexusSIS infrastructure.</p>
+        </div>
+        <div data-lang data-l="pt">
+          <h2>Pronto para transformar<br />sua instituição?</h2>
+          <p>O ecossistema AU Nexus foi desenvolvido para a Atlántis University. Cada plugin se integra com sua infraestrutura existente de Moodle e NexusSIS.</p>
+        </div>
+
+        <div>
+          <a href="https://github.com/aunexus-lab" class="btn-primary">
+            <span data-lang-inline data-l="es" class="active">Ver en GitHub</span>
+            <span data-lang-inline data-l="en">View on GitHub</span>
+            <span data-lang-inline data-l="pt">Ver no GitHub</span>
+            ↗
+          </a>
+          <a href="/" class="btn-secondary">
+            <span data-lang-inline data-l="es" class="active">← Atlántis Nexus</span>
+            <span data-lang-inline data-l="en">← Atlántis Nexus</span>
+            <span data-lang-inline data-l="pt">← Atlántis Nexus</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">
+          © 2026 Atlántis University · AU Nexus.
+          <span data-lang-inline data-l="es" class="active">Todos los derechos reservados.</span>
+          <span data-lang-inline data-l="en">All rights reserved.</span>
+          <span data-lang-inline data-l="pt">Todos os direitos reservados.</span>
+        </p>
+        <div class="footer-links">
+          <a href="/">Atlántis Nexus</a>
+          <a href="/framework">Framework</a>
+          <a href="https://github.com/aunexus-lab">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Language Script ── -->
+  <script>
+    function setLang(lang) {
+      // Update lang attribute
+      document.documentElement.lang = lang;
+
+      // Block elements
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('active', el.dataset.l === lang);
+      });
+
+      // Inline elements
+      document.querySelectorAll('[data-lang-inline]').forEach(el => {
+        el.classList.toggle('active', el.dataset.l === lang);
+      });
+
+      // Buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+      });
+
+      // Persist
+      localStorage.setItem('au-lang', lang);
+    }
+
+    // Init from localStorage or browser language
+    (function () {
+      const saved = localStorage.getItem('au-lang');
+      const browserLang = navigator.language?.slice(0, 2).toLowerCase();
+      const supported = ['es', 'en', 'pt'];
+      const lang = supported.includes(saved) ? saved
+        : supported.includes(browserLang) ? browserLang
+        : 'es';
+      setLang(lang);
+    })();
+  </script>
+
+</body>
+</html>
