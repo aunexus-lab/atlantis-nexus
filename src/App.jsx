@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MethodPage from './pages/MethodPage';
+import PrivacyPage from './pages/PrivacyPage';
+import TermsPage from './pages/TermsPage';
 
 const navItems = [
   { id: 'principles', label: 'Principles' },
@@ -96,6 +98,8 @@ function App() {
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<AppLayout />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
       </Routes>
     </BrowserRouter>
   );
