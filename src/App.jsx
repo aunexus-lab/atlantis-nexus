@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MethodPage from './pages/MethodPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
+import AcademicLabPage from './pages/AcademicLabPage';
+import AcademicLabPageEs from './pages/AcademicLabPageEs';
 
 const navItems = [
   { id: 'principles', label: 'Principles' },
@@ -100,6 +102,8 @@ function App() {
         <Route path="/" element={<AppLayout />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms" element={<TermsPage />} />
+        <Route path="/academic-lab" element={<AcademicLabPage />} />
+        <Route path="/academic-lab-es" element={<AcademicLabPageEs />} />
       </Routes>
     </BrowserRouter>
   );
