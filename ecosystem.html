@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AU Nexus — El método detrás del ecosistema</title>
+<meta name="description" content="Dossier interactivo del Método AU Nexus: cómo Atlantis University conecta contexto, decisión y artifacts en un ecosistema académico gobernado." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://nexus.atlantisuniversity.edu/ecosystem.html" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="AU Nexus — El método detrás del ecosistema" />
+<meta property="og:description" content="No es una app. Es cómo construimos sistemas académicos. Explora el grafo del ecosistema, los principios y el ciclo de vida." />
+<meta property="og:url" content="https://nexus.atlantisuniversity.edu/ecosystem.html" />
+<meta property="og:site_name" content="AU Nexus Method" />
+<meta property="og:image" content="https://nexus.atlantisuniversity.edu/images/og-nexus.png" />
+<meta property="og:locale" content="es_ES" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AU Nexus — El método detrás del ecosistema" />
+<meta name="twitter:description" content="Dossier interactivo: método, principios y constelación del ecosistema AU Nexus." />
+<meta name="twitter:image" content="https://nexus.atlantisuniversity.edu/images/og-nexus.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://nexus.atlantisuniversity.edu/ecosystem.html",
+  "url": "https://nexus.atlantisuniversity.edu/ecosystem.html",
+  "name": "AU Nexus — El método detrás del ecosistema",
+  "inLanguage": "es",
+  "description": "Dossier interactivo del Método AU Nexus: cómo Atlantis University conecta contexto, decisión y artifacts en un ecosistema académico gobernado.",
+  "isPartOf": { "@id": "https://nexus.atlantisuniversity.edu/#website" },
+  "publisher": { "@id": "https://nexus.atlantisuniversity.edu/#org" }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#161616;
+  --white:#ffffff;
+  --red:#e10600;
+  --gray-100:#f5f5f5;
+  --gray-300:#e0e0e0;
+  --gray-500:#6b6b6b;
+  --gray-850:#2d2d2d;
+  --charcoal:#242424;
+  --navy:#26325a;
+  --navy-2:#334073;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+.mono{font-family:'JetBrains Mono',monospace;}
+::selection{background:var(--red);color:var(--white);}
+
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--red);z-index:1000;width:0%;transition:width .1s linear;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;justify-content:space-between;align-items:center;padding:22px 48px;mix-blend-mode:difference;}
+nav .logo{color:var(--white);font-weight:800;letter-spacing:.02em;font-size:15px;}
+nav .tag{color:var(--white);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;}
+
+section{min-height:100vh;padding:120px 48px;position:relative;}
+.center-flex{display:flex;flex-direction:column;justify-content:center;}
+
+/* HERO */
+.hero{background:var(--charcoal);color:var(--white);}
+.hero .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:28px;opacity:0;animation:fadeUp .8s ease forwards .2s;}
+.hero h1{font-size:clamp(38px,6.6vw,96px);font-weight:800;line-height:1.04;letter-spacing:-.03em;max-width:1150px;opacity:0;animation:fadeUp .9s ease forwards .4s;}
+.hero h1 span{color:var(--red);}
+.hero .sub{margin-top:36px;max-width:680px;font-size:19px;line-height:1.6;color:#cfcfcf;font-weight:400;opacity:0;animation:fadeUp .9s ease forwards .6s;}
+.hero .def{margin-top:44px;max-width:760px;padding:22px 26px;border-left:2px solid var(--red);background:#111;font-size:14.5px;line-height:1.65;color:#ccc;opacity:0;animation:fadeUp .9s ease forwards .8s;}
+.scroll-cue{position:absolute;bottom:48px;left:48px;color:#8a8a8a;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;display:flex;align-items:center;gap:10px;}
+.scroll-cue .bar{width:1px;height:36px;background:linear-gradient(var(--red),transparent);animation:pulse 1.8s ease infinite;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+
+.eyebrow-label{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.eyebrow-label::before{content:'';width:24px;height:1px;background:var(--red);}
+h2.section-title{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-.02em;line-height:1.1;max-width:900px;}
+.section-lead{max-width:700px;font-size:16.5px;line-height:1.65;color:var(--gray-500);margin-top:20px;}
+.section-lead.on-dark{color:#c7cbd9;}
+
+/* PROBLEM SECTION */
+.problem{background:var(--gray-100);}
+.silo-grid{margin-top:52px;display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--gray-300);border:1px solid var(--gray-300);}
+.silo{background:var(--white);padding:26px 16px;text-align:center;transition:background .2s ease;}
+.silo .ic{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--red);letter-spacing:.1em;margin-bottom:10px;}
+.silo h4{font-size:14px;font-weight:700;}
+.problem-note{margin-top:40px;font-size:15px;line-height:1.7;color:var(--gray-500);max-width:760px;}
+.wrong-answers{margin-top:40px;display:flex;flex-wrap:wrap;gap:12px;}
+.wrong-chip{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.04em;padding:10px 16px;border:1px solid var(--gray-300);color:var(--gray-500);text-decoration:line-through;}
+
+/* LOOP */
+.loop-section{background:var(--charcoal);color:var(--white);}
+.loop-row{margin-top:60px;display:flex;flex-wrap:wrap;align-items:center;gap:0;}
+.loop-step{background:var(--gray-850);border:1px solid #3a3a3a;padding:22px 22px;min-width:170px;flex:1;position:relative;}
+.loop-step .n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red);margin-bottom:8px;}
+.loop-step h4{font-size:16px;font-weight:700;}
+.loop-arrow{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:18px;padding:0 10px;}
+.loop-big{margin-top:36px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.06em;color:#a3a3a3;}
+.loop-tagline{margin-top:56px;font-size:clamp(22px,3.4vw,38px);font-weight:800;letter-spacing:-.02em;max-width:820px;}
+.loop-tagline .r{color:var(--red);}
+
+/* PRINCIPLES */
+.principles{background:var(--white);}
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-300);margin-top:56px;border:1px solid var(--gray-300);}
+.pillar{background:var(--white);padding:36px 28px;cursor:pointer;transition:background .25s ease;display:flex;flex-direction:column;gap:14px;min-height:230px;}
+.pillar:hover{background:var(--charcoal);}
+.pillar:hover .pillar-num,.pillar:hover h3,.pillar:hover p{color:var(--white);}
+.pillar:hover .pillar-num{color:var(--red);}
+.pillar-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--red);font-weight:600;}
+.pillar h3{font-size:19px;font-weight:700;letter-spacing:-.01em;transition:color .25s ease;}
+.pillar p{font-size:13.5px;line-height:1.55;color:var(--gray-500);transition:color .25s ease;}
+.pillar .detail{font-size:12.5px;line-height:1.6;color:#999;margin-top:auto;padding-top:14px;border-top:1px solid #2a2a2a;max-height:0;overflow:hidden;transition:max-height .3s ease,opacity .3s ease;opacity:0;}
+.pillar.open .detail{max-height:220px;opacity:1;}
+.pillar:hover .detail{color:#aaa;}
+@media(max-width:900px){.pillar-grid{grid-template-columns:1fr;}}
+
+/* ECOSYSTEM GRAPH */
+.ecosystem{background:var(--navy);color:#eef0f6;padding:120px 0 100px;}
+.eco-head{padding:0 48px;}
+.eco-lead{color:#cfd2e2;}
+.eco-wrap{margin-top:44px;padding:0 48px;display:grid;grid-template-columns:1fr 360px;gap:0;align-items:start;}
+.graph-panel{background:radial-gradient(circle at 50% 42%,#3c4a80 0%,var(--navy) 74%);border:1px solid #48538a;position:relative;}
+.graph-panel svg{width:100%;height:auto;display:block;}
+.detail-panel{background:#2b3559;border:1px solid #48538a;border-left:3px solid var(--red);padding:26px 24px;min-height:480px;position:sticky;top:90px;}
+.detail-panel .ph-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#9aa0c2;}
+.detail-panel h3{font-size:21px;font-weight:800;margin-top:10px;letter-spacing:-.01em;}
+.detail-panel .dom-tag{display:inline-flex;align-items:center;gap:7px;margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#c7cbe0;}
+.detail-panel .dom-tag .dot{width:8px;height:8px;border-radius:50%;}
+.detail-panel .dpx{margin-top:16px;font-size:14px;line-height:1.65;color:#c3c7dc;}
+.detail-panel ul.feat{margin-top:14px;padding-left:18px;}
+.detail-panel ul.feat li{font-size:13px;line-height:1.6;color:#a9aec6;margin-bottom:6px;}
+.rel-title{margin-top:22px;padding-top:18px;border-top:1px solid #3d4870;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#9aa0c2;}
+.rel-list{margin-top:12px;display:flex;flex-direction:column;gap:10px;}
+.rel-item{background:#33406b;border:1px solid #4a5688;padding:11px 13px;cursor:pointer;transition:border-color .2s ease,background .2s ease;}
+.rel-item:hover{border-color:var(--red);background:#2b3659;}
+.rel-item .rn{font-size:13px;font-weight:700;color:#f5f6fa;}
+.rel-item .rt{margin-top:4px;font-size:12px;line-height:1.5;color:#cbd0e2;}
+.detail-empty{color:#9aa0c2;font-size:14px;line-height:1.7;margin-top:60px;}
+
+.controls{padding:0 48px;margin-top:36px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.ctrl-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#9aa0c2;margin-right:6px;}
+.dom-btn{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.04em;padding:8px 13px;border:1px solid #4a5688;background:#2b355a80;color:#eceefa;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .2s ease;}
+.dom-btn .dot{width:8px;height:8px;border-radius:50%;}
+.dom-btn.off{opacity:.32;}
+.dom-btn:hover{border-color:#6270a8;}
+.reset-btn{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.04em;padding:8px 13px;border:1px solid var(--red);background:transparent;color:var(--red);cursor:pointer;}
+
+.flows{padding:0 48px;margin-top:56px;}
+.flow-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#9aa0c2;margin-bottom:16px;}
+.flow-btns{display:flex;flex-wrap:wrap;gap:10px;}
+.flow-btn{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.03em;padding:11px 16px;border:1px solid #4a5688;background:#2b355a;color:#eceefa;cursor:pointer;text-align:left;transition:all .2s ease;}
+.flow-btn:hover{border-color:var(--red);}
+.flow-btn.active{border-color:var(--red);background:#3a1a1a;color:#fff;}
+.flow-narrative{margin-top:20px;display:none;background:#2b355a;border:1px solid #48538a;padding:20px 22px;}
+.flow-narrative.show{display:block;}
+.flow-narrative h4{font-size:15px;font-weight:700;color:#fff;}
+.flow-steps{margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:0;}
+.flow-step-chip{font-family:'JetBrains Mono',monospace;font-size:11.5px;padding:7px 12px;background:#3a4780;border:1px solid #5361a0;color:#ffffff;}
+.flow-arrow2{color:var(--red);padding:0 8px;font-family:'JetBrains Mono',monospace;}
+
+/* GRAPH SVG NODE STYLING (classes applied via JS) */
+.node-circle{cursor:pointer;transition:opacity .25s ease,filter .25s ease;}
+.node-circle.dim{opacity:.16;}
+.node-circle.hi{filter:drop-shadow(0 0 8px currentColor);}
+.node-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;fill:#ffffff;pointer-events:none;transition:opacity .25s ease;paint-order:stroke;stroke:#1c2440;stroke-width:4px;stroke-linejoin:round;letter-spacing:.01em;}
+.node-label.dim{opacity:.22;}
+.node-badge{font-family:'JetBrains Mono',monospace;font-size:9px;fill:#1b2338;font-weight:700;pointer-events:none;}
+.edge-line{stroke:#6b78ad;stroke-width:1;fill:none;opacity:.45;transition:opacity .25s ease,stroke .25s ease,stroke-width .25s ease;}
+.edge-line.dim{opacity:.06;}
+.edge-line.hi{stroke:var(--red);stroke-width:2.4;opacity:1;}
+.center-node text.center-lbl{font-family:'JetBrains Mono',monospace;font-size:11px;fill:#fff;font-weight:700;}
+
+/* LIFECYCLE */
+.lifecycle{background:var(--gray-100);}
+.life-row{margin-top:52px;display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--gray-300);border:1px solid var(--gray-300);}
+.life-card{background:var(--white);padding:26px 18px;min-height:220px;display:flex;flex-direction:column;gap:10px;}
+.life-card .ph{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--red);letter-spacing:.06em;}
+.life-card h4{font-size:16px;font-weight:700;}
+.life-card ul{margin-top:6px;padding-left:16px;}
+.life-card li{font-size:12px;line-height:1.55;color:var(--gray-500);margin-bottom:4px;}
+@media(max-width:1100px){.life-row{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:640px){.life-row{grid-template-columns:1fr;}}
+
+/* AI GOVERNANCE */
+.ai-gov{background:var(--charcoal);color:var(--white);}
+.ai-grid{margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#3a3a3a;border:1px solid #3a3a3a;}
+.ai-col{padding:32px 30px;background:var(--gray-850);}
+.ai-col.bad h4{color:#a8a8a8;}
+.ai-col.good h4{color:var(--red);}
+.ai-col h4{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px;}
+.ai-col ul{padding-left:18px;}
+.ai-col li{font-size:14px;line-height:1.7;color:#dbdbdb;margin-bottom:8px;}
+@media(max-width:900px){.ai-grid{grid-template-columns:1fr;}}
+
+/* APPENDIX */
+.appendix{background:var(--white);}
+details.repo-map{margin-top:44px;border:1px solid var(--gray-300);}
+details.repo-map summary{cursor:pointer;padding:18px 22px;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.04em;background:var(--gray-100);list-style:none;}
+details.repo-map summary::-webkit-details-marker{display:none;}
+details.repo-map summary::before{content:'+ ';color:var(--red);font-weight:700;}
+details.repo-map[open] summary::before{content:'− ';}
+.repo-table{width:100%;border-collapse:collapse;}
+.repo-table th,.repo-table td{text-align:left;padding:12px 20px;font-size:13px;border-bottom:1px solid var(--gray-300);vertical-align:top;}
+.repo-table th{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500);}
+.repo-table td.rd{color:var(--gray-500);line-height:1.5;}
+.rigor-note{margin-top:36px;padding:20px 22px;border:1px solid var(--gray-300);background:var(--gray-100);font-size:13px;line-height:1.65;color:var(--gray-500);max-width:820px;}
+.rigor-note b{color:var(--black);}
+
+/* CLOSING */
+.closing{background:var(--charcoal);color:var(--white);}
+.closing h2{font-size:clamp(30px,4.6vw,58px);font-weight:800;letter-spacing:-.02em;max-width:900px;line-height:1.15;}
+.closing h2 .r{color:var(--red);}
+.closing .sub2{margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.06em;color:#aaaaaa;text-transform:uppercase;}
+.closing .cta-row{margin-top:48px;display:flex;gap:16px;flex-wrap:wrap;}
+.cta{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:16px 28px;border:1px solid #333;color:var(--white);text-decoration:none;transition:all .2s ease;background:none;cursor:pointer;}
+.cta.primary{background:var(--red);border-color:var(--red);}
+.cta:hover{border-color:var(--white);}
+.cta.primary:hover{background:transparent;}
+footer{padding:28px 48px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#8a8a8a;display:flex;justify-content:space-between;background:var(--charcoal);border-top:1px solid #333;flex-wrap:wrap;gap:8px;}
+
+@media(max-width:1000px){
+  .eco-wrap{grid-template-columns:1fr;}
+  .detail-panel{position:relative;top:0;margin-top:28px;min-height:0;}
+}
+@media(max-width:900px){.silo-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:640px){section{padding:100px 24px;}nav{padding:20px 24px;}.eco-head,.eco-wrap,.controls,.flows{padding-left:24px;padding-right:24px;}}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<nav>
+  <a class="logo" href="/" style="text-decoration:none;color:inherit">ATLANTIS UNIVERSITY</a>
+  <div class="tag">AU Nexus — Método &amp; Ecosistema</div>
+</nav>
+
+<!-- 1. HERO -->
+<section class="hero center-flex">
+  <div class="eyebrow mono">Método institucional — no un producto</div>
+  <h1>No es una app.<br>Es cómo <span>construimos</span><br>sistemas académicos.</h1>
+  <p class="sub">AU Nexus convierte señales institucionales dispersas en decisiones coordinadas, experiencias relevantes y mejora continua — a través de un método común, no de una herramienta más.</p>
+  <div class="def mono">"El Método AU Nexus es una metodología estructurada para diseñar, orquestar y evolucionar sistemas académicos inteligentes mediante decisiones conscientes del contexto y construcción basada en artifacts."</div>
+  <div class="scroll-cue">SCROLL<div class="bar"></div></div>
+</section>
+
+<!-- 2. PROBLEM -->
+<section class="problem center-flex">
+  <div class="eyebrow-label mono">01 — El problema</div>
+  <h2 class="section-title">Las instituciones no carecen de sistemas. Carecen de conexión, contexto y capacidad de adaptación.</h2>
+  <p class="section-lead">Cada sistema conoce un fragmento distinto de la misma persona. Nadie interpreta el contexto completo, decide qué importa ahora, ni mide el resultado de esa decisión.</p>
+  <div class="silo-grid">
+    <div class="silo"><div class="ic mono">SIS</div><h4>Expediente y estado financiero</h4></div>
+    <div class="silo"><div class="ic mono">LMS</div><h4>Actividad de aprendizaje</h4></div>
+    <div class="silo"><div class="ic mono">ADMISIONES</div><h4>Aplicación y documentos</h4></div>
+    <div class="silo"><div class="ic mono">FINANZAS</div><h4>Pagos y conciliación</h4></div>
+    <div class="silo"><div class="ic mono">ASESORÍA</div><h4>Fragmentos del estudiante</h4></div>
+    <div class="silo"><div class="ic mono">IA</div><h4>Responde sin contexto compartido</h4></div>
+  </div>
+  <div class="wrong-answers">
+    <div class="wrong-chip">otro plugin</div>
+    <div class="wrong-chip">otra API</div>
+    <div class="wrong-chip">otro dashboard</div>
+    <div class="wrong-chip">otro chatbot</div>
+  </div>
+  <p class="problem-note">Cada uno de estos mejora una parte y deja intacta la fragmentación. AU Nexus no agrega otra pieza al caos: cambia la lógica con la que todas las piezas se diseñan y conectan.</p>
+</section>
+
+<!-- 3. LOOP -->
+<section class="loop-section center-flex">
+  <div class="eyebrow-label mono">02 — El ciclo operativo</div>
+  <h2 class="section-title" style="color:#fff;">Un sistema para construir sistemas</h2>
+  <p class="section-lead on-dark">Todo artifact de AU Nexus — sin importar la interfaz en la que aparezca — atraviesa el mismo ciclo.</p>
+  <div class="loop-row">
+    <div class="loop-step"><div class="n">01</div><h4>Contexto</h4></div>
+    <div class="loop-arrow">→</div>
+    <div class="loop-step"><div class="n">02</div><h4>Decisión</h4></div>
+    <div class="loop-arrow">→</div>
+    <div class="loop-step"><div class="n">03</div><h4>Acción</h4></div>
+    <div class="loop-arrow">→</div>
+    <div class="loop-step"><div class="n">04</div><h4>Retroalimentación</h4></div>
+    <div class="loop-arrow">→</div>
+    <div class="loop-step"><div class="n">05</div><h4>Adaptación</h4></div>
+  </div>
+  <div class="loop-tagline">Nexus no es lo que construimos. <span class="r">Es cómo construimos.</span></div>
+</section>
+
+<!-- 4. PRINCIPLES -->
+<section class="principles center-flex">
+  <div class="eyebrow-label mono">03 — Los seis principios</div>
+  <h2 class="section-title">La gramática común detrás de cada artifact</h2>
+  <p class="section-lead">Haz clic en cada principio para ver la evidencia concreta dentro del ecosistema.</p>
+  <div class="pillar-grid" id="pillarGrid">
+    <div class="pillar" onclick="this.classList.toggle('open')">
+      <div class="pillar-num">01</div>
+      <h3>Contexto sobre contenido</h3>
+      <p>Responder al estado real de la persona, no solo mostrar información.</p>
+      <div class="detail">Pathfinder interpreta intención; OnlineApp cambia los documentos requeridos según programa y estatus migratorio; los dashboards muestran estado por persona, no listados genéricos.</div>
+    </div>
+    <div class="pillar" onclick="this.classList.toggle('open')">
+      <div class="pillar-num">02</div>
+      <h3>Orquestación sobre flujo estático</h3>
+      <p>Decidir dinámicamente el siguiente movimiento, no imponer una secuencia fija.</p>
+      <div class="detail">Campus Engage pasa de señal a audiencia revisada, envío y outcome; OnlineApp gestiona estados posteriores a la aplicación según el contexto del aplicante.</div>
+    </div>
+    <div class="pillar" onclick="this.classList.toggle('open')">
+      <div class="pillar-num">03</div>
+      <h3>Artifacts sobre funciones</h3>
+      <p>Construir capacidades completas y medibles, no botones aislados.</p>
+      <div class="detail">Course Blueprint incluye inputs, IA, revisión humana, locking, estados, versionado, despliegue y métricas — un artifact completo, no una función suelta.</div>
+    </div>
+    <div class="pillar" onclick="this.classList.toggle('open')">
+      <div class="pillar-num">04</div>
+      <h3>Sistemas sobre interfaces</h3>
+      <p>El valor está en la lógica y las conexiones; la interfaz es solo la superficie.</p>
+      <div class="detail">NexusSIS sirve múltiples portales y plugins a la vez; la misma lógica de decisión puede aparecer en Moodle, un portal, un email o un dashboard.</div>
+    </div>
+    <div class="pillar" onclick="this.classList.toggle('open')">
+      <div class="pillar-num">05</div>
+      <h3>Intervención humana por diseño</h3>
+      <p>La IA recomienda; el juicio humano interviene cuando el riesgo lo requiere.</p>
+      <div class="detail">Course Blueprint exige revisión antes de desplegar; AFW produce recomendaciones, no enforcement automático; Campus Engage no envía alertas sensibles sin revisión.</div>
+    </div>
+    <div class="pillar" onclick="this.classList.toggle('open')">
+      <div class="pillar-num">06</div>
+      <h3>Adaptación continua</h3>
+      <p>El sistema aprende de comportamiento, resultados y feedback.</p>
+      <div class="detail">Feedback de ATLAS, outcomes medidos por Campus Engage, telemetría de IA, analítica de admisiones y versionado de artifacts alimentan el aprendizaje continuo.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ECOSYSTEM GRAPH -->
+<section class="ecosystem" id="ecosystem">
+  <div class="eco-head">
+    <div class="eyebrow-label mono">04 — El ecosistema</div>
+    <h2 class="section-title" style="color:#fff;">Una constelación, no una lista de repositorios</h2>
+    <p class="section-lead eco-lead">Haz clic en cualquier nodo para ver sus características y con qué otros componentes se relaciona — y por qué. Usa los filtros para aislar un dominio, o un flujo para ver una señal atravesando el ecosistema de punta a punta.</p>
+  </div>
+
+  <div class="controls" id="domainControls">
+    <span class="ctrl-label">Dominios:</span>
+    <!-- populated by JS -->
+  </div>
+
+  <div class="eco-wrap">
+    <div class="graph-panel">
+      <svg id="graphSvg" viewBox="0 0 1200 860" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+    <div class="detail-panel" id="detailPanel">
+      <div class="detail-empty">Selecciona un nodo del ecosistema para ver su propósito, sus características y sus relaciones con otros componentes.</div>
+    </div>
+  </div>
+
+  <div class="flows">
+    <div class="flow-eyebrow mono">Flujos demostrativos — una señal atravesando el ecosistema</div>
+    <div class="flow-btns" id="flowButtons"></div>
+    <div class="flow-narrative" id="flowNarrative"></div>
+  </div>
+</section>
+
+<!-- 6. LIFECYCLE -->
+<section class="lifecycle center-flex">
+  <div class="eyebrow-label mono">05 — El ciclo de vida de una persona</div>
+  <h2 class="section-title">De descubrir un programa a construir una trayectoria</h2>
+  <p class="section-lead">El mismo ecosistema acompaña a la persona en cada fase — con artifacts distintos, la misma lógica.</p>
+  <div class="life-row">
+    <div class="life-card"><div class="ph mono">01 · DISCOVER</div><h4>Descubrir</h4><ul><li>Homesite</li><li>Course Explorer</li><li>Pathfinder</li><li>Shortlink</li></ul></div>
+    <div class="life-card"><div class="ph mono">02 · APPLY</div><h4>Aplicar</h4><ul><li>OnlineApp</li><li>FAFSA Assistant</li><li>Zoho CRM · Stripe</li></ul></div>
+    <div class="life-card"><div class="ph mono">03 · ONBOARD</div><h4>Incorporarse</h4><ul><li>NexusSIS</li><li>Atlantis Boost</li><li>ReqManage</li></ul></div>
+    <div class="life-card"><div class="ph mono">04 · LEARN</div><h4>Aprender y persistir</h4><ul><li>Attendance</li><li>Campus Engage</li><li>ATLAS</li><li>Nexus Dashboard</li></ul></div>
+    <div class="life-card"><div class="ph mono">05 · PROGRESS</div><h4>Progresar</h4><ul><li>Pathfinder</li><li>Campus Resume</li><li>Pathways Block</li></ul></div>
+    <div class="life-card"><div class="ph mono">06 · OPERATE</div><h4>Operar la institución</h4><ul><li>OneStop</li><li>Course Blueprint</li><li>Syllabus Intelligence</li></ul></div>
+  </div>
+</section>
+
+<!-- 7. AI GOVERNANCE -->
+<section class="ai-gov center-flex">
+  <div class="eyebrow-label mono">06 — IA con límites</div>
+  <h2 class="section-title" style="color:#fff;">La IA recomienda. El sistema gobierna.</h2>
+  <p class="section-lead on-dark">La diferencia entre "IA añadida" y una IA dentro de un sistema gobernado no es la tecnología — es el contexto, la trazabilidad y la revisión humana que la rodean.</p>
+  <div class="ai-grid">
+    <div class="ai-col bad">
+      <h4 class="mono">IA como respuesta automática</h4>
+      <ul>
+        <li>Responde sin memoria de contexto institucional</li>
+        <li>No distingue reglas, permisos ni políticas</li>
+        <li>Actúa y comunica sin revisión previa</li>
+        <li>No deja evidencia reconstruible de la decisión</li>
+      </ul>
+    </div>
+    <div class="ai-col good">
+      <h4 class="mono">IA dentro de un sistema gobernado</h4>
+      <ul>
+        <li>Recibe contexto real vía Campus MCP</li>
+        <li>Aplica revisión humana antes de acciones sensibles</li>
+        <li>Registra logs, tokens, latencia y errores</li>
+        <li>Versiona, permite rollback y explica su decisión</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 8. APPENDIX -->
+<section class="appendix center-flex">
+  <div class="eyebrow-label mono">07 — Evidencia</div>
+  <h2 class="section-title">Mapa completo de repositorios</h2>
+  <p class="section-lead">El directorio contiene 38 repositorios. No todos representan una capacidad productiva madura — algunos son infraestructura, otros interfaces, otros laboratorios de aprendizaje.</p>
+  <details class="repo-map">
+    <summary class="mono">VER EL INVENTARIO COMPLETO POR DOMINIO</summary>
+    <table class="repo-table">
+      <thead><tr><th>Dominio</th><th>Repositorios</th><th>Papel en el ecosistema</th></tr></thead>
+      <tbody>
+        <tr><td>Método y narrativa</td><td class="rd">atlantis-nexus</td><td class="rd">Definición formal, principios, modelos y artifact model.</td></tr>
+        <tr><td>SIS e integración</td><td class="rd">nexussis, names-matcher</td><td class="rd">Acceso a datos/operaciones SIS y reconciliación de identidades.</td></tr>
+        <tr><td>Operación financiera</td><td class="rd">dssis, payment-app, stripepayment, mdlfinstatus</td><td class="rd">OneStop, conciliación SIS-QB, pagos y visibilidad financiera.</td></tr>
+        <tr><td>Admisiones y entrada</td><td class="rd">onlineapp, aiassistant, homesite, shortlink</td><td class="rd">Aplicación, documentos, FAFSA, presencia pública y distribución.</td></tr>
+        <tr><td>Experiencia Moodle</td><td class="rd">atlantisboost, moodle-home, moodle-course, homecourses, linkclass, tinymce</td><td class="rd">Tema, home, navegación, continuidad y autoría visual.</td></tr>
+        <tr><td>Soporte y engagement</td><td class="rd">campusengage, mdlcampuschat, reqmanage, nexus-dashboard</td><td class="rd">Intervenciones, ATLAS, solicitudes y vistas contextuales.</td></tr>
+        <tr><td>Actividad y asistencia</td><td class="rd">attendance, attendancetrack</td><td class="rd">Registro y sincronización de evidencia de actividad con SIS.</td></tr>
+        <tr><td>Pathways y descubrimiento</td><td class="rd">pathfinder, courseexplorer, nexuspathways-block</td><td class="rd">Intención, afinidad, programas y exploración.</td></tr>
+        <tr><td>Diseño académico</td><td class="rd">syintelligence, courseblueprint, microlauncher</td><td class="rd">Syllabus intelligence, blueprints gobernados y despliegue.</td></tr>
+        <tr><td>Carrera y evidencia</td><td class="rd">campusresume</td><td class="rd">Resume, competencias y entrevistas simuladas.</td></tr>
+        <tr><td>Tejido de IA</td><td class="rd">campusmcp</td><td class="rd">Servicio contextual que soporta asistentes y experiencias de IA.</td></tr>
+        <tr><td>Laboratorios académicos</td><td class="rd">afw, bounded-by-design, evidence-in-motion, rules-in-motion</td><td class="rd">Aprendizaje sobre decisiones, evidencia, ética y gobernanza.</td></tr>
+        <tr><td>Repos auxiliares</td><td class="rd">aulovable, crm_analytics</td><td class="rd">Iniciativas relacionadas o experimentales — no son núcleo sin validación adicional.</td></tr>
+      </tbody>
+    </table>
+  </details>
+  <div class="rigor-note">
+    <b>Nota de rigor.</b> Este documento describe el método y la arquitectura conceptual del ecosistema. No afirma que todos los componentes estén en producción, ni incluye cifras de adopción, retención o impacto — esas cifras solo deben añadirse tras confirmación con datos institucionales.
+  </div>
+</section>
+
+<!-- 9. CLOSING -->
+<section class="closing center-flex">
+  <div class="eyebrow-label mono">08 — El estándar</div>
+  <h2>Nexus no es lo que construimos. <span class="r">Es cómo construimos.</span></h2>
+  <div class="sub2">Consciente del contexto · Con decisión habilitada · Gobernado por personas · En evolución continua</div>
+  <div class="cta-row">
+    <button class="cta primary" onclick="document.getElementById('ecosystem').scrollIntoView({behavior:'smooth'})">Explorar el ecosistema ↑</button>
+    <a class="cta" href="/">El método</a>
+    <a class="cta" href="/nexus-suite.html">Nexus Suite</a>
+  </div>
+</section>
+
+<footer>
+  <span>AU NEXUS — DOSSIER INTERACTIVO</span>
+  <span>
+    <a href="/" style="color:inherit;text-decoration:none">Método</a>
+    ·
+    <a href="/nexus-suite.html" style="color:inherit;text-decoration:none">Nexus Suite</a>
+    ·
+    ATLANTIS UNIVERSITY · 2026
+  </span>
+</footer>
+
+<script>
+/* ============== SCROLL PROGRESS ============== */
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  const p=(window.scrollY/h)*100;
+  document.getElementById('progress').style.width=p+'%';
+});
+
+/* ============== ECOSYSTEM DATA ============== */
+const DOMAINS = {
+  metodo:      {label:'Método',                        color:'#e10600', angle:0},
+  sis:         {label:'SIS & Integración',              color:'#4ea1ff', angle:0},
+  financiero:  {label:'Financiero',                     color:'#e0a64e', angle:51},
+  admisiones:  {label:'Admisiones',                     color:'#5bc98a', angle:103},
+  moodle:      {label:'Experiencia Moodle',             color:'#a56ee0', angle:154},
+  engagement:  {label:'Engagement & Soporte',           color:'#e06b8a', angle:206},
+  pathways:    {label:'Pathways & Diseño académico',    color:'#4fc9b0', angle:257},
+  governance:  {label:'Gobernanza & Labs',               color:'#9aa0a6', angle:309},
+};
+
+const NODES = [
+  {id:'nexus', name:'Método AU Nexus', domain:'metodo', capa:'Narrativa y gobierno del ecosistema',
+   desc:'La metodología que define cómo se diseñan, orquestan y evolucionan todos los sistemas académicos del ecosistema — no un repositorio funcional, sino el lenguaje común que los conecta.',
+   bullets:['Define el ciclo Contexto → Decisión → Acción → Retroalimentación → Adaptación','Establece los seis principios que todo artifact debe cumplir','Fuente de definición formal en atlantis-nexus/PRD.md']},
+
+  {id:'nexussis', name:'NexusSIS', domain:'sis', capa:'Contexto e integración',
+   desc:'Puente REST hacia Campus Nexus SIS. Es el componente más conectivo del ecosistema: expone datos académicos, financieros, de ayuda financiera y operativos a casi todos los demás artifacts.',
+   bullets:['Acceso gobernado a datos académicos y financieros','Fuente de verdad para identidad, matrícula y cargos','Referenciado por más de una decena de otros componentes']},
+  {id:'names', name:'Names Matcher', domain:'sis', capa:'Integración',
+   desc:'Herramienta operativa que reconcilia identidades entre registros financieros y registros SIS, evitando duplicados y desalineaciones entre sistemas.',
+   bullets:['Reconciliación de identidades financieras/SIS','Soporte directo a la conciliación de OneStop']},
+  {id:'campusmcp', name:'Campus MCP', domain:'sis', capa:'Tejido de IA',
+   desc:'Servicio contextual que provee a los asistentes y experiencias de IA acceso gobernado a contexto institucional, sin que cada asistente reimplemente su propia fuente de verdad.',
+   bullets:['Contexto compartido para asistentes de IA','Soporta ATLAS y el FAFSA Assistant','Punto único de gobernanza para el acceso de IA a datos']},
+
+  {id:'dssis', name:'OneStop', domain:'financiero', capa:'Operación financiera',
+   desc:'Portal financiero que conecta NexusSIS (verdad de cargos) con QuickBooks (libro contable), ofreciendo conciliación, ledger, auditoría y portales por rol.',
+   bullets:['Motor de diff entre cargos SIS y libro contable','Auditoría y rollback de operaciones financieras','Portales diferenciados por rol']},
+  {id:'paymentapp', name:'Payment App', domain:'financiero', capa:'Operación financiera',
+   desc:'Experiencia de cobro y gateway de pagos compartido, usado tanto por Admisiones como por Operación financiera.',
+   bullets:['Gateway de pago compartido entre OnlineApp y OneStop','Procesa transacciones que luego OneStop concilia']},
+  {id:'finstatus', name:'MDL FinStatus', domain:'financiero', capa:'Experiencia',
+   desc:'Muestra el estado financiero del estudiante de forma contextual, directamente dentro del entorno académico (Moodle).',
+   bullets:['Estado financiero visible dentro del flujo académico','Lee directamente del estado conciliado en OneStop/NexusSIS']},
+
+  {id:'onlineapp', name:'OnlineApp', domain:'admisiones', capa:'Contexto y entrada',
+   desc:'Portal de admisiones: wizard de aplicación, documentos condicionales según programa/estatus, pagos, analítica e integración con SIS/CRM.',
+   bullets:['Requisitos documentales dinámicos por contexto','Pagos integrados y estado de aplicación en tiempo real','Integración con Zoho CRM, Stripe y NexusSIS']},
+  {id:'aiassistant', name:'AI Assistant · FAFSA', domain:'admisiones', capa:'Artifact de IA',
+   desc:'Asistente bilingüe de ayuda financiera federal (FAFSA), con proxy seguro hacia IA y límites estrictos de privacidad.',
+   bullets:['Bilingüe, con límites de privacidad explícitos','Proxy seguro vía Campus MCP','Acompaña al aplicante durante el proceso de FAFSA']},
+  {id:'homesite', name:'Homesite', domain:'admisiones', capa:'Descubrimiento',
+   desc:'Superficie pública institucional — el primer punto de contacto entre una persona interesada y la institución.',
+   bullets:['Presencia pública institucional','Punto de entrada hacia el flujo de aplicación']},
+
+  {id:'moodle', name:'Experiencia Moodle', domain:'moodle', capa:'Artifacts y experiencias',
+   desc:'Conjunto de componentes (Atlantis Boost, Moodle Home, Moodle Course, Homecourses, Linkclass) que conforman la experiencia académica dentro del LMS institucional.',
+   bullets:['Tema, home, navegación y continuidad de curso','Superficie donde aparecen ATLAS, Pathfinder y Campus Engage','Fuente de actividad para Attendance y Campus Engage']},
+
+  {id:'campusengage', name:'Campus Engage', domain:'engagement', capa:'Orquestación',
+   desc:'Detecta estudiantes que requieren atención a partir de señales de actividad, prepara comunicaciones revisables por una persona y mide el resultado.',
+   bullets:['Detección de riesgo por inactividad','Comunicación con CTA medible, revisada por humano','Outcomes visibles en Nexus Dashboard']},
+  {id:'atlas', name:'ATLAS (mdlcampuschat)', domain:'engagement', capa:'Artifact de IA',
+   desc:'Asistente contextual dentro de Moodle que responde usando identidad y contexto institucional, con modo de entrenamiento y feedback.',
+   bullets:['Responde dentro del flujo de Moodle','Modo de entrenamiento y feedback positivo/negativo','Usa contexto servido por Campus MCP']},
+  {id:'reqmanage', name:'ReqManage', domain:'engagement', capa:'Orquestación',
+   desc:'Conecta solicitudes estudiantiles con tareas operativas del SIS, dando seguimiento sin perder trazabilidad.',
+   bullets:['Convierte solicitudes en tareas operativas','Seguimiento trazable de requerimientos estudiantiles']},
+  {id:'dashboard', name:'Nexus Dashboard', domain:'engagement', capa:'Experiencia',
+   desc:'Vistas contextuales para estudiante, advisor y gestión de casos, combinando señales de todo el ecosistema.',
+   bullets:['Vista de estudiante, advisor y casos','Combina señales de NexusSIS y Campus Engage']},
+  {id:'attendance', name:'Attendance', domain:'engagement', capa:'Orquestación',
+   desc:'Sincroniza actividad académica de Moodle con asistencia gobernada en el SIS, incluyendo colas y revisión operativa.',
+   bullets:['Traduce actividad en asistencia formal','Colas de revisión operativa antes de registrar en SIS']},
+
+  {id:'pathfinder', name:'Pathfinder', domain:'pathways', capa:'Orquestación',
+   desc:'Interpreta la intención libre del estudiante, calcula afinidad de programa, aplica reglas curriculares y recomienda una ruta explicada.',
+   bullets:['Intención → afinidad de programa → ruta recomendada','Explica por qué una ruta encaja','Genera señal de seguimiento para advisors']},
+  {id:'courseexplorer', name:'Course Explorer + Pathways Block', domain:'pathways', capa:'Descubrimiento',
+   desc:'Exploración de cursos y visibilidad de pathways directamente en el flujo cotidiano del estudiante.',
+   bullets:['Explora catálogo con contexto de afinidad','Hace visibles las rutas de Pathfinder en el día a día']},
+  {id:'syintelligence', name:'Syllabus Intelligence', domain:'pathways', capa:'Diseño académico',
+   desc:'Ingiere y estructura syllabi con IA, produciendo la base sobre la que Course Blueprint construye un curso gobernado.',
+   bullets:['Extracción y estructuración de syllabi con IA','Alimenta directamente a Course Blueprint']},
+  {id:'courseblueprint', name:'Course Blueprint', domain:'pathways', capa:'Diseño académico',
+   desc:'IA como copiloto para diseñar cursos, con revisión humana obligatoria, versionado, diff y despliegue gobernado en Moodle.',
+   bullets:['Estados draft → review → ready → deployed','Revisión humana antes de cada despliegue','Versionado y diff, despliegue idempotente en Moodle']},
+  {id:'campusresume', name:'Campus Resume', domain:'pathways', capa:'Carrera y evidencia',
+   desc:'Transforma el perfil y los cursos completados del estudiante en resume, preparación de entrevistas y evidencia de competencias.',
+   bullets:['Resume builder a partir de cursos completados','Entrevistas simuladas y analítica de expresión']},
+
+  {id:'labs', name:'Laboratorios de gobernanza', domain:'governance', capa:'Evidencia y evolución',
+   desc:'Conjunto de proyectos de aprendizaje (AFW, Bounded by Design, Evidence in Motion, Rules in Motion) que exploran reglas, límites, evidencia y ética antes de llevarlas a producción.',
+   bullets:['Recomendaciones, no enforcement automático','Informan reglas de revisión en Course Blueprint','Exploran cómo medir y gobernar intervenciones']},
+];
+
+const EDGES = [
+  ['nexus','nexussis','El método define cómo NexusSIS expone datos y operaciones de forma gobernada al resto del ecosistema.'],
+  ['nexus','campusmcp','El método rige cómo accede la IA al contexto institucional y qué límites de gobernanza aplican.'],
+  ['nexus','courseblueprint','El método define el patrón de artifact que Course Blueprint implementa: propósito, lógica, revisión y métricas.'],
+  ['nexus','campusengage','El ciclo Contexto → Decisión → Acción → Retroalimentación → Adaptación se materializa de forma directa en Campus Engage.'],
+  ['nexus','labs','Los laboratorios exploran y validan los principios del método antes de llevarlos a producción.'],
+
+  ['nexussis','dssis','NexusSIS entrega cargos y pagos; OneStop los concilia con QuickBooks y detecta diferencias.'],
+  ['nexussis','onlineapp','OnlineApp consulta y sincroniza estado académico y financiero a través de NexusSIS.'],
+  ['nexussis','pathfinder','Pathfinder usa datos curriculares y de matrícula de NexusSIS para recomendar rutas.'],
+  ['nexussis','attendance','Attendance traduce actividad de Moodle en asistencia gobernada dentro de NexusSIS.'],
+  ['nexussis','moodle','La experiencia Moodle consume identidad y estado académico gobernados por NexusSIS.'],
+  ['nexussis','courseexplorer','Course Explorer y el bloque de pathways muestran catálogo y afinidad basados en datos de NexusSIS.'],
+  ['nexussis','reqmanage','ReqManage convierte solicitudes estudiantiles en tareas operativas dentro de NexusSIS.'],
+  ['nexussis','finstatus','MDL FinStatus muestra estado financiero contextual leyendo directamente de NexusSIS.'],
+  ['nexussis','dashboard','Nexus Dashboard combina señales de NexusSIS para construir vistas de estudiante, advisor y casos.'],
+  ['nexussis','campusresume','Campus Resume construye evidencia de trayectoria a partir de cursos completados en NexusSIS.'],
+  ['nexussis','names','Names Matcher reconcilia identidades entre NexusSIS y los registros financieros externos.'],
+
+  ['campusmcp','atlas','ATLAS responde dentro de Moodle usando el contexto servido por Campus MCP.'],
+  ['campusmcp','aiassistant','El asistente de FAFSA usa Campus MCP como proxy seguro de contexto e IA.'],
+
+  ['courseblueprint','syintelligence','Syllabus Intelligence estructura el syllabus; Course Blueprint lo convierte en curso versionado y desplegable.'],
+  ['courseblueprint','pathfinder','Pathfinder puede recomendar rutas hacia cursos definidos y gobernados en Course Blueprint.'],
+  ['courseblueprint','moodle','Course Blueprint despliega de forma idempotente y versionada dentro de la experiencia Moodle.'],
+
+  ['dssis','onlineapp','OnlineApp y OneStop comparten el flujo de solicitudes de pago y su sincronización con NexusSIS.'],
+  ['dssis','paymentapp','Payment App procesa los cobros que OneStop luego concilia contra QuickBooks.'],
+  ['dssis','finstatus','MDL FinStatus refleja el estado que OneStop mantiene conciliado entre SIS y QuickBooks.'],
+  ['dssis','names','Names Matcher ayuda a OneStop a reconciliar identidades entre pagos y expedientes.'],
+
+  ['campusengage','dashboard','Las intervenciones y su resultado en Campus Engage alimentan las vistas de Nexus Dashboard.'],
+  ['campusengage','moodle','Campus Engage detecta señales de inactividad a partir de la actividad registrada en Moodle.'],
+  ['campusengage','attendance','La señal de actividad que usa Attendance también informa el riesgo que evalúa Campus Engage.'],
+
+  ['attendance','moodle','Attendance traduce la actividad académica registrada en Moodle en asistencia formal en el SIS.'],
+
+  ['onlineapp','aiassistant','El aplicante recibe ayuda contextual del FAFSA Assistant durante el proceso en OnlineApp.'],
+  ['onlineapp','homesite','Homesite dirige el interés público hacia el flujo de aplicación en OnlineApp.'],
+  ['onlineapp','paymentapp','OnlineApp usa Payment App para procesar los pagos asociados a la aplicación.'],
+  ['onlineapp','reqmanage','Las solicitudes documentales del aplicante se gestionan operativamente a través de ReqManage.'],
+
+  ['pathfinder','courseexplorer','Course Explorer y el bloque de pathways hacen visible en el flujo diario lo que Pathfinder recomienda.'],
+  ['pathfinder','moodle','Las rutas recomendadas por Pathfinder aparecen dentro de la experiencia Moodle del estudiante.'],
+
+  ['campusresume','moodle','Campus Resume transforma cursos completados y perfil en evidencia de competencias y CV.'],
+
+  ['labs','courseblueprint','Bounded by Design y Rules in Motion informan las reglas y límites de revisión en Course Blueprint.'],
+  ['labs','campusengage','Evidence in Motion y AFW exploran cómo medir y gobernar intervenciones como las de Campus Engage.'],
+];
+
+const FLOWS = [
+  {id:'A', title:'A · De interés a ruta académica', path:['pathfinder','courseexplorer','nexussis','moodle'],
+   steps:['Intención libre del estudiante','Afinidad de programa (embeddings)','Reglas curriculares y catálogo','Ruta recomendada + explicación','Interés guardado y señal a advisor','Seguimiento y ajuste']},
+  {id:'B', title:'B · De inactividad a intervención medible', path:['moodle','campusengage','attendance','dashboard'],
+   steps:['Actividad y progreso en Moodle','Detección de señal de riesgo','Audiencia congelada para revisión','Comunicación con CTA','Entrega y clic','Outcome y aprendizaje institucional']},
+  {id:'C', title:'C · De syllabus a curso gobernado', path:['syintelligence','courseblueprint','moodle'],
+   steps:['PDF/DOCX del syllabus','Extracción y estructura con IA','Course Blueprint','Revisión humana','Versión y diff','Despliegue idempotente en Moodle']},
+  {id:'D', title:'D · De aplicación a estudiante activo', path:['onlineapp','paymentapp','dssis','nexussis','moodle','reqmanage'],
+   steps:['Cuenta del applicant','Aplicación multi-etapa','Requisitos documentales según contexto','Pago','CRM / SIS','Identidad, acceso y soporte continuo']},
+  {id:'E', title:'E · De diferencia financiera a acción auditable', path:['dssis','nexussis','names'],
+   steps:['Cargos y pagos en NexusSIS','Invoices y payments en QuickBooks','Motor de diff','Snapshot before/after','Audit log','Rollback si es necesario']},
+];
+
+/* ============== LAYOUT ============== */
+const CX=600, CY=430;
+const byDomain = {};
+NODES.forEach(n=>{(byDomain[n.domain]=byDomain[n.domain]||[]).push(n);});
+Object.keys(byDomain).forEach(dom=>{
+  const cfg = DOMAINS[dom];
+  const arr = byDomain[dom];
+  const n = arr.length;
+  if(dom==='metodo'){ arr[0].cx=CX; arr[0].cy=CY; return; }
+  const spread = Math.min(78, 20*(n-1));
+  arr.forEach((node,i)=>{
+    const offset = n===1 ? 0 : (-spread/2 + (spread/(n-1))*i);
+    const ang = (cfg.angle+offset) * Math.PI/180;
+    const radius = 250 + 46*i;
+    node.cx = CX + radius*Math.cos(ang);
+    node.cy = CY + radius*Math.sin(ang)*0.72;
+  });
+});
+
+const nodeById = {}; NODES.forEach(n=>nodeById[n.id]=n);
+const edgeList = EDGES.map(([a,b,t])=>({a,b,t}));
+
+function edgesOf(id){
+  return edgeList.filter(e=>e.a===id||e.b===id);
+}
+
+/* ============== RENDER GRAPH ============== */
+const svg = document.getElementById('graphSvg');
+const NS = 'http://www.w3.org/2000/svg';
+let activeDomains = new Set(Object.keys(DOMAINS));
+let selectedNode = null;
+let activeFlow = null;
+
+function el(tag,attrs){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
+
+function drawGraph(){
+  svg.innerHTML='';
+  const edgeG = el('g',{id:'edgeG'});
+  edgeList.forEach(e=>{
+    const a=nodeById[e.a], b=nodeById[e.b];
+    const mx=(a.cx+b.cx)/2, my=(a.cy+b.cy)/2 - 18;
+    const path = el('path',{d:`M ${a.cx} ${a.cy} Q ${mx} ${my} ${b.cx} ${b.cy}`,class:'edge-line','data-a':e.a,'data-b':e.b});
+    edgeG.appendChild(path);
+  });
+  svg.appendChild(edgeG);
+
+  const nodeG = el('g',{id:'nodeG'});
+  NODES.forEach(n=>{
+    const cfg = DOMAINS[n.domain];
+    const r = n.domain==='metodo' ? 36 : 26;
+    const g = el('g',{'data-id':n.id,style:'cursor:pointer'});
+    const circle = el('circle',{cx:n.cx,cy:n.cy,r:r,class:'node-circle',fill: n.domain==='metodo' ? cfg.color : 'rgba(255,255,255,.10)',stroke:cfg.color,'stroke-width':n.domain==='metodo'?2.5:2.2,style:`color:${cfg.color}`});
+    g.appendChild(circle);
+    const label = el('text',{x:n.cx, y:n.cy+r+14, 'text-anchor':'middle', class:'node-label'});
+    label.textContent = n.name.length>26 ? n.name.slice(0,24)+'…' : n.name;
+    g.appendChild(label);
+    g.addEventListener('click',()=>selectNode(n.id));
+    nodeG.appendChild(g);
+  });
+  svg.appendChild(nodeG);
+}
+
+function clearHighlights(){
+  svg.querySelectorAll('.node-circle').forEach(c=>c.classList.remove('dim','hi'));
+  svg.querySelectorAll('.node-label').forEach(c=>c.classList.remove('dim'));
+  svg.querySelectorAll('.edge-line').forEach(c=>c.classList.remove('dim','hi'));
+}
+
+function applyDomainFilter(){
+  NODES.forEach(n=>{
+    const g = svg.querySelector(`g[data-id="${n.id}"]`);
+    if(!g) return;
+    const on = activeDomains.has(n.domain);
+    g.querySelector('.node-circle').classList.toggle('dim', !on && !selectedNode && !activeFlow);
+    g.querySelector('.node-label').classList.toggle('dim', !on && !selectedNode && !activeFlow);
+  });
+}
+
+function selectNode(id){
+  selectedNode = id; activeFlow = null;
+  document.getElementById('flowNarrative').classList.remove('show');
+  document.querySelectorAll('.flow-btn').forEach(b=>b.classList.remove('active'));
+  clearHighlights();
+  const rel = edgesOf(id);
+  const connected = new Set([id]);
+  rel.forEach(e=>{connected.add(e.a);connected.add(e.b);});
+
+  NODES.forEach(n=>{
+    const g = svg.querySelector(`g[data-id="${n.id}"]`);
+    const circ = g.querySelector('.node-circle');
+    const lab = g.querySelector('.node-label');
+    if(connected.has(n.id)){
+      if(n.id===id) circ.classList.add('hi');
+    } else {
+      circ.classList.add('dim'); lab.classList.add('dim');
+    }
+  });
+  edgeList.forEach(e=>{
+    const p = svg.querySelector(`path[data-a="${e.a}"][data-b="${e.b}"]`);
+    if(e.a===id||e.b===id) p.classList.add('hi'); else p.classList.add('dim');
+  });
+
+  renderDetail(id, rel);
+}
+
+function renderDetail(id, rel){
+  const n = nodeById[id];
+  const cfg = DOMAINS[n.domain];
+  const panel = document.getElementById('detailPanel');
+  let relHtml = rel.map(e=>{
+    const otherId = e.a===id ? e.b : e.a;
+    const other = nodeById[otherId];
+    return `<div class="rel-item" onclick="selectNode('${otherId}')">
+      <div class="rn">↔ ${other.name}</div>
+      <div class="rt">${e.t}</div>
+    </div>`;
+  }).join('');
+  if(!relHtml) relHtml = '<div class="rt" style="color:#9aa0c2;">Sin relaciones directas mapeadas en esta vista.</div>';
+
+  panel.innerHTML = `
+    <div class="ph-eyebrow mono">${n.capa}</div>
+    <h3>${n.name}</h3>
+    <div class="dom-tag"><span class="dot" style="background:${cfg.color}"></span>${cfg.label}</div>
+    <div class="dpx">${n.desc}</div>
+    <ul class="feat">${n.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
+    <div class="rel-title mono">Se relaciona con (${rel.length})</div>
+    <div class="rel-list">${relHtml}</div>
+  `;
+}
+
+/* ============== DOMAIN FILTER CONTROLS ============== */
+const domainControls = document.getElementById('domainControls');
+Object.keys(DOMAINS).forEach(dom=>{
+  const cfg = DOMAINS[dom];
+  const btn = document.createElement('button');
+  btn.className='dom-btn'; btn.type='button';
+  btn.innerHTML = `<span class="dot" style="background:${cfg.color}"></span>${cfg.label}`;
+  btn.addEventListener('click',()=>{
+    if(activeDomains.has(dom)){ activeDomains.delete(dom); btn.classList.add('off'); }
+    else { activeDomains.add(dom); btn.classList.remove('off'); }
+    if(!selectedNode && !activeFlow) applyDomainFilter();
+  });
+  domainControls.appendChild(btn);
+});
+const resetBtn = document.createElement('button');
+resetBtn.className='reset-btn'; resetBtn.type='button'; resetBtn.textContent='RESTABLECER';
+resetBtn.addEventListener('click',()=>{
+  selectedNode=null; activeFlow=null;
+  activeDomains = new Set(Object.keys(DOMAINS));
+  document.querySelectorAll('.dom-btn').forEach(b=>b.classList.remove('off'));
+  document.querySelectorAll('.flow-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('flowNarrative').classList.remove('show');
+  clearHighlights();
+  document.getElementById('detailPanel').innerHTML = '<div class="detail-empty">Selecciona un nodo del ecosistema para ver su propósito, sus características y sus relaciones con otros componentes.</div>';
+});
+domainControls.appendChild(resetBtn);
+
+/* ============== FLOWS ============== */
+const flowButtons = document.getElementById('flowButtons');
+const flowNarrative = document.getElementById('flowNarrative');
+FLOWS.forEach(flow=>{
+  const btn = document.createElement('button');
+  btn.className='flow-btn'; btn.type='button'; btn.textContent=flow.title;
+  btn.addEventListener('click',()=>selectFlow(flow.id,btn));
+  flowButtons.appendChild(btn);
+});
+
+function selectFlow(id, btnEl){
+  selectedNode = null;
+  activeFlow = id;
+  document.querySelectorAll('.flow-btn').forEach(b=>b.classList.remove('active'));
+  btnEl.classList.add('active');
+  clearHighlights();
+  const flow = FLOWS.find(f=>f.id===id);
+  const pathSet = new Set(flow.path);
+
+  NODES.forEach(n=>{
+    const g = svg.querySelector(`g[data-id="${n.id}"]`);
+    const circ = g.querySelector('.node-circle');
+    const lab = g.querySelector('.node-label');
+    if(pathSet.has(n.id)){ circ.classList.add('hi'); } else { circ.classList.add('dim'); lab.classList.add('dim'); }
+  });
+  for(let i=0;i<flow.path.length-1;i++){
+    const a=flow.path[i], b=flow.path[i+1];
+    let p = svg.querySelector(`path[data-a="${a}"][data-b="${b}"]`) || svg.querySelector(`path[data-a="${b}"][data-b="${a}"]`);
+    if(p) p.classList.add('hi');
+  }
+  edgeList.forEach(e=>{
+    const p = svg.querySelector(`path[data-a="${e.a}"][data-b="${e.b}"]`);
+    if(!p.classList.contains('hi')) p.classList.add('dim');
+  });
+
+  flowNarrative.classList.add('show');
+  flowNarrative.innerHTML = `<h4>${flow.title}</h4>
+    <div class="flow-steps">${flow.steps.map((s,i)=>`<span class="flow-step-chip">${i+1}. ${s}</span>${i<flow.steps.length-1?'<span class="flow-arrow2">→</span>':''}`).join('')}</div>`;
+
+  const detail = document.getElementById('detailPanel');
+  detail.innerHTML = `<div class="ph-eyebrow mono">FLUJO ${flow.id}</div>
+    <h3>${flow.title}</h3>
+    <div class="dpx">Componentes que participan directamente en esta señal, en orden: ${flow.path.map(pid=>nodeById[pid].name).join(' → ')}.</div>
+    <div class="rel-title mono">Toca un componente en el grafo para ver sus detalles individuales.</div>`;
+}
+
+/* ============== INIT ============== */
+drawGraph();
+</script>
+
+</body>
+</html>
