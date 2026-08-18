@@ -67,6 +67,15 @@ export default function ClosingSection() {
             className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <a
+              href="/ecosystem.html"
+              className="px-8 py-3 rounded-xl text-sm font-semibold text-white no-underline transition-colors"
+              style={{ background: '#C8102E' }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#9B0B22'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = '#C8102E'; }}
+            >
+              Explore the Ecosystem ↗
+            </a>
+            <a
               href="#hero"
               className="px-8 py-3 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition-colors no-underline"
             >

@@ -77,14 +77,20 @@ function AppLayout() {
             </a>
             <a
               href="/nexus-suite.html"
-              className="ml-2 px-3 py-1.5 rounded-lg text-sm font-semibold text-white no-underline transition-all duration-200"
-              style={{ background: '#C8102E' }}
-              onMouseEnter={e => e.currentTarget.style.background = '#9B0B22'}
-              onMouseLeave={e => e.currentTarget.style.background = '#C8102E'}
+              className="px-3 py-1.5 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-all duration-200 no-underline"
             >
-              Nexus Suite ↗
+              Nexus Suite
             </a>
           </nav>
+          <a
+            href="/ecosystem.html"
+            className="ml-2 px-3 py-1.5 rounded-lg text-sm font-semibold text-white no-underline transition-all duration-200"
+            style={{ background: '#C8102E' }}
+            onMouseEnter={e => e.currentTarget.style.background = '#9B0B22'}
+            onMouseLeave={e => e.currentTarget.style.background = '#C8102E'}
+          >
+            Ecosystem ↗
+          </a>
         </div>
       </header>
 
@@ -97,6 +103,8 @@ function AppLayout() {
       <footer className="border-t border-gray-100 py-12 text-center text-sm text-gray-400">
         <p className="m-0">© 2026 Atlantis University · AU Nexus Method</p>
         <div className="flex items-center justify-center gap-4 mt-2">
+          <a href="/ecosystem.html" className="text-gray-400 hover:text-gray-700 no-underline text-xs transition-colors">Ecosystem</a>
+          <span className="text-gray-200">·</span>
           <a href="/academic-lab" className="text-gray-400 hover:text-gray-700 no-underline text-xs transition-colors">Academic Lab</a>
           <span className="text-gray-200">·</span>
           <a href="/nexus-suite.html" className="text-gray-400 hover:text-gray-700 no-underline text-xs transition-colors">Nexus Suite</a>

@@ -49,11 +49,29 @@ export default function HeroSection() {
           {/* Problem statement */}
           <motion.p
             variants={fadeUp}
-            className="text-lg text-gray-500 font-light max-w-2xl mb-12"
+            className="text-lg text-gray-500 font-light max-w-2xl mb-8"
           >
             Traditional academic systems are static, fragmented, and don't react to context.
             Nexus introduces systems that interpret, decide, act, and evolve.
           </motion.p>
+
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-3 mb-12">
+            <a
+              href="/ecosystem.html"
+              className="px-6 py-3 rounded-xl text-sm font-semibold text-white no-underline transition-colors"
+              style={{ background: '#C8102E' }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#9B0B22'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = '#C8102E'; }}
+            >
+              Explore the Ecosystem ↗
+            </a>
+            <a
+              href="#principles"
+              className="px-6 py-3 rounded-xl bg-white text-gray-700 text-sm font-semibold border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all no-underline"
+            >
+              Read the Method
+            </a>
+          </motion.div>
 
           {/* Method structure preview */}
           <motion.div

@@ -334,6 +334,8 @@ export default function AcademicLabPage() {
         <div className="flex items-center justify-center gap-4 mt-2">
           <Link to="/" className="text-gray-400 hover:text-gray-700 no-underline text-xs transition-colors">AU Nexus Method</Link>
           <span className="text-gray-200">·</span>
+          <a href="/ecosystem.html" className="text-gray-400 hover:text-gray-700 no-underline text-xs transition-colors">Ecosystem</a>
+          <span className="text-gray-200">·</span>
           <Link to="/academic-lab-es" className="text-gray-400 hover:text-gray-700 no-underline text-xs transition-colors">Ver en Español</Link>
           <span className="text-gray-200">·</span>
           <Link to="/privacy" className="text-gray-400 hover:text-gray-700 no-underline text-xs transition-colors">Privacy</Link>
